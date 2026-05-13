@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as Vishkanya_pujaRouteImport } from './routes/vishkanya_puja'
+import { Route as PujaRouteImport } from './routes/puja'
 import { Route as DonateRouteImport } from './routes/donate'
 import { Route as IndexRouteImport } from './routes/index'
 
 const Vishkanya_pujaRoute = Vishkanya_pujaRouteImport.update({
   id: '/vishkanya_puja',
   path: '/vishkanya_puja',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PujaRoute = PujaRouteImport.update({
+  id: '/puja',
+  path: '/puja',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DonateRoute = DonateRouteImport.update({
@@ -32,30 +38,34 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/donate': typeof DonateRoute
+  '/puja': typeof PujaRoute
   '/vishkanya_puja': typeof Vishkanya_pujaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/donate': typeof DonateRoute
+  '/puja': typeof PujaRoute
   '/vishkanya_puja': typeof Vishkanya_pujaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/donate': typeof DonateRoute
+  '/puja': typeof PujaRoute
   '/vishkanya_puja': typeof Vishkanya_pujaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/donate' | '/vishkanya_puja'
+  fullPaths: '/' | '/donate' | '/puja' | '/vishkanya_puja'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/donate' | '/vishkanya_puja'
-  id: '__root__' | '/' | '/donate' | '/vishkanya_puja'
+  to: '/' | '/donate' | '/puja' | '/vishkanya_puja'
+  id: '__root__' | '/' | '/donate' | '/puja' | '/vishkanya_puja'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DonateRoute: typeof DonateRoute
+  PujaRoute: typeof PujaRoute
   Vishkanya_pujaRoute: typeof Vishkanya_pujaRoute
 }
 
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/vishkanya_puja'
       fullPath: '/vishkanya_puja'
       preLoaderRoute: typeof Vishkanya_pujaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/puja': {
+      id: '/puja'
+      path: '/puja'
+      fullPath: '/puja'
+      preLoaderRoute: typeof PujaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/donate': {
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DonateRoute: DonateRoute,
+  PujaRoute: PujaRoute,
   Vishkanya_pujaRoute: Vishkanya_pujaRoute,
 }
 export const routeTree = rootRouteImport
