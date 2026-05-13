@@ -1,0 +1,254 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-gold-glow: var(--gold-glow);
+  --color-saffron: var(--saffron);
+  --color-vermillion: var(--vermillion);
+  --color-maroon: var(--maroon);
+  --color-ember: var(--ember);
+  --color-ivory: var(--ivory);
+  --color-ink: var(--ink);
+  --color-night: var(--night);
+  --font-display: var(--font-display);
+  --font-devanagari: var(--font-devanagari);
+  --font-body: var(--font-body);
+}
+
+:root {
+  --radius: 0.625rem;
+
+  /* Cinematic candle-lit sanctum */
+  --background: oklch(0.16 0.035 40);            /* deep ember night */
+  --foreground: oklch(0.95 0.04 85);             /* warm ivory */
+  --card: oklch(0.2 0.04 38);
+  --card-foreground: oklch(0.95 0.04 85);
+  --popover: oklch(0.18 0.035 40);
+  --popover-foreground: oklch(0.95 0.04 85);
+
+  --primary: oklch(0.78 0.16 80);                 /* candle gold */
+  --primary-foreground: oklch(0.16 0.035 40);
+  --secondary: oklch(0.42 0.18 30);               /* deep sacred red */
+  --secondary-foreground: oklch(0.96 0.03 85);
+  --muted: oklch(0.24 0.04 38);
+  --muted-foreground: oklch(0.7 0.04 70);
+  --accent: oklch(0.82 0.16 82);
+  --accent-foreground: oklch(0.16 0.035 40);
+  --destructive: oklch(0.55 0.22 28);
+  --destructive-foreground: oklch(0.98 0.02 85);
+  --border: oklch(0.78 0.16 80 / 0.18);
+  --input: oklch(0.3 0.04 40);
+  --ring: oklch(0.78 0.16 80);
+
+  --gold: oklch(0.82 0.17 82);
+  --gold-deep: oklch(0.62 0.16 65);
+  --gold-glow: oklch(0.92 0.13 88);
+  --saffron: oklch(0.7 0.19 50);
+  --vermillion: oklch(0.55 0.22 28);
+  --maroon: oklch(0.28 0.1 28);
+  --ember: oklch(0.32 0.12 35);
+  --ivory: oklch(0.96 0.03 85);
+  --ink: oklch(0.12 0.02 40);
+  --night: oklch(0.1 0.025 38);
+
+  --font-display: "Cormorant Garamond", "Cinzel", serif;
+  --font-devanagari: "Tiro Devanagari Hindi", "Noto Serif Devanagari", serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --gradient-gold: linear-gradient(135deg, oklch(0.92 0.13 88) 0%, oklch(0.78 0.17 80) 50%, oklch(0.55 0.16 60) 100%);
+  --gradient-sanctum: radial-gradient(ellipse at top, oklch(0.32 0.1 35) 0%, oklch(0.16 0.035 40) 60%, oklch(0.1 0.025 38) 100%);
+  --gradient-ember: linear-gradient(180deg, oklch(0.18 0.04 40) 0%, oklch(0.24 0.08 35) 50%, oklch(0.18 0.04 40) 100%);
+
+  --shadow-gold: 0 20px 60px -20px oklch(0.78 0.17 80 / 0.45), 0 0 80px oklch(0.78 0.17 80 / 0.18);
+  --shadow-deep: 0 30px 80px -20px oklch(0 0 0 / 0.55);
+  --glow-candle: 0 0 60px oklch(0.85 0.16 80 / 0.45);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    font-feature-settings: "ss01", "ss02";
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+    font-weight: 500;
+  }
+
+  .font-hindi {
+    font-family: var(--font-devanagari);
+    letter-spacing: 0.005em;
+  }
+  .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .bg-gradient-gold { background: var(--gradient-gold); }
+  .bg-gradient-sanctum { background: var(--gradient-sanctum); }
+  .bg-gradient-ember { background: var(--gradient-ember); }
+  .shadow-gold { box-shadow: var(--shadow-gold); }
+  .shadow-deep { box-shadow: var(--shadow-deep); }
+  .glow-candle { box-shadow: var(--glow-candle); }
+
+  .gold-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, oklch(0.78 0.17 80 / 0.7), transparent);
+  }
+
+  .vignette {
+    background: radial-gradient(ellipse at center, transparent 30%, oklch(0.08 0.02 35 / 0.85) 100%);
+  }
+
+  /* WhatsApp floating button */
+  .whatsapp-float {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 50;
+    width: 54px;
+    height: 54px;
+    border-radius: 9999px;
+    background: #25d366; /* WhatsApp green */
+    box-shadow: 0 18px 50px -20px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.18);
+    display: grid;
+    place-items: center;
+    color: #ffffff;
+    transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+  }
+  .whatsapp-float:hover {
+    transform: translateY(-2px);
+    background: #1fb857;
+    box-shadow: 0 22px 60px -20px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.22);
+  }
+  .whatsapp-float__icon {
+    display: grid;
+    place-items: center;
+  }
+
+  /* Call floating button (stacked above WhatsApp) */
+  .call-float {
+    position: fixed;
+    right: 18px;
+    bottom: 86px; /* 18px + 54px + gap */
+    z-index: 50;
+    width: 54px;
+    height: 54px;
+    border-radius: 9999px;
+    background: #25d366; /* same as WhatsApp green for consistency */
+    box-shadow: 0 18px 50px -20px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.18);
+    display: grid;
+    place-items: center;
+    color: #ffffff;
+    transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+  }
+  .call-float:hover {
+    transform: translateY(-2px);
+    background: #1fb857;
+    box-shadow: 0 22px 60px -20px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.22);
+  }
+  .call-float__icon {
+    display: grid;
+    place-items: center;
+  }
+
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); opacity: 0.85; }
+    50% { transform: scale(1.04); opacity: 1; }
+  }
+  .animate-breathe { animation: breathe 7s ease-in-out infinite; }
+
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    33% { transform: translateY(-22px) translateX(8px); }
+    66% { transform: translateY(12px) translateX(-6px); }
+  }
+  .animate-float-slow { animation: float-slow 16s ease-in-out infinite; }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .animate-shimmer {
+    background: linear-gradient(90deg, transparent, oklch(1 0.05 90 / 0.35), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 3.5s linear infinite;
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 30px oklch(0.85 0.16 80 / 0.35); }
+    50% { box-shadow: 0 0 70px oklch(0.85 0.16 80 / 0.65); }
+  }
+  .animate-glow-pulse { animation: glow-pulse 5s ease-in-out infinite; }
+
+  @keyframes flicker {
+    0%, 100% { opacity: 0.95; }
+    45% { opacity: 1; }
+    50% { opacity: 0.7; }
+    55% { opacity: 1; }
+  }
+  .animate-flicker { animation: flicker 4s ease-in-out infinite; }
+
+  @keyframes incense {
+    0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+    20% { opacity: 0.4; }
+    100% { transform: translateY(-260px) translateX(20px) scale(1.6); opacity: 0; }
+  }
+  .animate-incense { animation: incense 9s ease-out infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

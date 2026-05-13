@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap");
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.25rem;
+  /* Mandir palette: deep maroon night, golden brass, ivory, sindoor red */
+  --background: oklch(0.14 0.03 40);
+  --foreground: oklch(0.97 0.02 85);
+  --gold: oklch(0.82 0.16 82);
+  --gold-deep: oklch(0.68 0.17 62);
+  --gold-glow: oklch(0.92 0.14 95);
+  --sindoor: oklch(0.55 0.22 28);
+  --maroon: oklch(0.22 0.08 25);
+  --ivory: oklch(0.97 0.02 85);
+  --ember: oklch(0.75 0.21 50);
+  --gradient-flame: radial-gradient(ellipse at center, var(--gold-glow) 0%, var(--ember) 35%, var(--sindoor) 70%, transparent 100%);
+  --gradient-gold: linear-gradient(135deg, var(--gold-glow) 0%, var(--gold) 40%, var(--gold-deep) 100%);
+  --gradient-veil: linear-gradient(180deg, oklch(0.14 0.03 40 / 0.85) 0%, oklch(0.14 0.03 40 / 0.4) 50%, oklch(0.14 0.03 40 / 0.95) 100%);
+  --shadow-glow: 0 0 60px oklch(0.82 0.16 82 / 0.4), 0 0 120px oklch(0.75 0.21 50 / 0.25);
+  --card: oklch(0.18 0.04 30);
+  --card-foreground: oklch(0.97 0.02 85);
+  --popover: oklch(0.18 0.04 30);
+  --popover-foreground: oklch(0.97 0.02 85);
+  --primary: oklch(0.82 0.16 82);
+  --primary-foreground: oklch(0.18 0.04 30);
+  --secondary: oklch(0.55 0.22 28);
+  --secondary-foreground: oklch(0.97 0.02 85);
+  --muted: oklch(0.22 0.04 30);
+  --muted-foreground: oklch(0.75 0.04 80);
+  --accent: oklch(0.75 0.21 50);
+  --accent-foreground: oklch(0.18 0.04 30);
+  --destructive: oklch(0.55 0.22 28);
+  --destructive-foreground: oklch(0.97 0.02 85);
+  --border: oklch(0.82 0.16 82 / 0.2);
+  --input: oklch(0.82 0.16 82 / 0.15);
+  --ring: oklch(0.82 0.16 82);
+  --chart-1: oklch(0.82 0.16 82);
+  --chart-2: oklch(0.75 0.21 50);
+  --chart-3: oklch(0.55 0.22 28);
+  --chart-4: oklch(0.68 0.17 62);
+  --chart-5: oklch(0.92 0.14 95);
+  --sidebar: oklch(0.18 0.04 30);
+  --sidebar-foreground: oklch(0.97 0.02 85);
+  --sidebar-primary: oklch(0.82 0.16 82);
+  --sidebar-primary-foreground: oklch(0.18 0.04 30);
+  --sidebar-accent: oklch(0.22 0.04 30);
+  --sidebar-accent-foreground: oklch(0.97 0.02 85);
+  --sidebar-border: oklch(0.82 0.16 82 / 0.2);
+  --sidebar-ring: oklch(0.82 0.16 82);
+}
+
+@theme inline {
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-gold-glow: var(--gold-glow);
+  --color-sindoor: var(--sindoor);
+  --color-maroon: var(--maroon);
+  --color-ivory: var(--ivory);
+  --color-ember: var(--ember);
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; transform: scale(1) translateY(0); filter: brightness(1.1); }
+  25% { opacity: 0.85; transform: scale(0.98) translateY(-2px) skewX(-2deg); filter: brightness(1.3); }
+  50% { opacity: 0.95; transform: scale(1.02) translateY(1px) skewX(1deg); filter: brightness(0.95); }
+  75% { opacity: 0.9; transform: scale(0.99) translateY(-1px) skewX(-1deg); filter: brightness(1.2); }
+}
+@keyframes ember-rise {
+  0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(-120vh) translateX(var(--drift, 20px)) scale(0.3); opacity: 0; }
+}
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes slow-spin { to { transform: rotate(360deg); } }
+@keyframes breathe { 0%,100% { transform: scale(1); opacity: 0.7;} 50% { transform: scale(1.08); opacity: 1;} }
+
+.flame-flicker { animation: flicker 0.18s ease-in-out infinite; transform-origin: bottom center; }
+.ember-particle { animation: ember-rise linear infinite; }
+.gold-shimmer {
+  background: linear-gradient(110deg, oklch(0.68 0.17 62) 0%, oklch(0.92 0.14 95) 30%, oklch(0.82 0.16 82) 50%, oklch(0.92 0.14 95) 70%, oklch(0.68 0.17 62) 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s ease-in-out infinite;
+}
+.slow-spin { animation: slow-spin 80s linear infinite; }
+.breathe { animation: breathe 4s ease-in-out infinite; }
+.text-glow { text-shadow: 0 0 20px oklch(0.82 0.16 82 / 0.6), 0 0 40px oklch(0.75 0.21 50 / 0.3); }
+
+
+.dark {
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+}
