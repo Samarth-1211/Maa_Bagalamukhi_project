@@ -13,7 +13,7 @@ import diya from "@/assets/diya.png";
 import yantra from "@/assets/yantra.png";
 import petals from "@/assets/petals.png";
 import "../../home_style.css";
-import { TempleIntro } from "../../routes/TrishulIntro";
+import { TempleIntro } from "../../routes/-TrishulIntro";
 /* ------------------------------------------------------------------ */
 /*  Sub-pieces                                                         */
 /* ------------------------------------------------------------------ */
