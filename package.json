@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && node ./scripts/generate-dist-index.mjs . ./dist",
-    "build:dev": "vite build --mode development && node ./scripts/generate-dist-index.mjs . ./dist",
+    "build": "vite build && node ./scripts/generate-dist-index.mjs . ./dist && node ./scripts/copy-assets-to-dist-assets.mjs . ./dist",
+    "build:dev": "vite build --mode development && node ./scripts/generate-dist-index.mjs . ./dist && node ./scripts/copy-assets-to-dist-assets.mjs . ./dist",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write ."
