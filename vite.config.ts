@@ -7,3 +7,5 @@ export default defineConfig({
     },
   },
 });
+
+// For more configuration options, see https://tanstack.com/start/docs/configuration
