@@ -1,5 +1,18 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
+  "$schema": "https://json.schemastore.org/wrangler.json",
   "name": "projbagalamukhi",
-  "compatibility_date": "2025-09-24"
+  "type": "javascript",
+  "compatibility_date": "2025-09-24",
+  "compatibility_flags": ["nodejs_compat"],
+  
+  "main": "@tanstack/react-start/server-entry",
+  
+  "build": {
+    "command": "npm run build",
+    "cwd": "./",
+    "watch_paths": [
+      "src/**/*.{ts,tsx,js,jsx}",
+      "vite.config.ts"
+    ]
+  }
 }
