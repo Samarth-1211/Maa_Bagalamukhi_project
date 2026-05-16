@@ -6,7 +6,7 @@ import maaTrishulLogo from "@/assets/maa_trishul_logo.png";
 import { Link } from "@tanstack/react-router";
 
 const links = [
-  { href: "#home", label: "Home", hi: "मुख्य" },
+  { href: "/", label: "Home", hi: "मुख्य" },
   { href: "#events", label: "Havan/Puja", hi: "कार्यक्रम" },
   { href: "#donation", label: "Donation", hi: "दान" },
   { href: "#about", label: "About", hi: "परिचय" },

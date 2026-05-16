@@ -89,7 +89,7 @@ function DonatePage() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.1 }}
-          className="gold-shimmer text-glow mt-4 text-4xl leading-[1.15] sm:text-5xl md:text-6xl"
+          className="gold-shimmer text-glow mt-4 text-4xl leading-[1.45] sm:text-5xl md:text-6xl"
           style={{ fontFamily: '"Tiro Devanagari Sanskrit", serif' }}
         >
           माँ के चरणों में अपनी सेवा अर्पित करें
