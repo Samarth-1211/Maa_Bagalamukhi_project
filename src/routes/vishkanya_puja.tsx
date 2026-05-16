@@ -161,7 +161,7 @@ function Intro() {
         >
           <ChapterLabel n="महापूजा" label="The Sacred Remedy" />
           <h1 className="mt-6 font-deva text-5xl leading-[1.05] sm:text-7xl md:text-[5.5rem] text-gradient-gold">
-            लक्ष्मी विषकन्या
+          <br /> लक्ष्मी विषकन्या
             <br />
             दोष निवारण महापूजा
           </h1>
@@ -204,16 +204,16 @@ function ChapterWhat() {
   return (
     <section
       ref={ref}
-      className="relative grid min-h-screen grid-cols-1 items-center gap-12 overflow-hidden border-t border-gold/10 px-6 py-32 md:grid-cols-2 md:px-16"
+      className="relative grid min-h-screen grid-cols-1 items-center gap-12 overflow-visible border-t border-gold/10 px-6 py-32 md:grid-cols-2 md:px-16"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_30%,oklch(0.32_0.12_25/0.4),transparent_60%)]" />
 
       <motion.div style={{ y: textY }} className="relative order-2 max-w-xl md:order-1">
         <ChapterLabel n="अध्याय एक" label="What is this Mahapuja" />
-        <h2 className="mt-5 font-deva text-4xl leading-tight text-gradient-gold sm:text-5xl">
-          यह महापूजा क्या है?
-        </h2>
-        <p className="mt-6 font-display text-lg leading-relaxed text-foreground/80">
+        <h2 className="mt-5 font-deva text-4xl sm:text-5xl leading-[3.45] md:leading-[1.50] overflow-hidden pb-3 tracking-[0.01em] text-gradient-gold">
+        यह महापूजा क्या है?
+      </h2>
+        <p className="mt-15 font-display text-lg leading-[5] md:leading-[2.3] text-foreground/80">
           <span className="text-gold">लक्ष्मी विषकन्या दोष निवारण महापूजा</span>{" "}
           माँ पीताम्बरा बगलामुखी मंदिर में संपन्न होने वाला एक अत्यंत दुर्लभ एवं दिव्य साधना है, जो केवल सिद्ध योगियों एवं गुरु परंपरा के सान्निध्य में संपन्न कराया जाता है।
 इस अनुष्ठान की प्रमुख विशेषता “सहस्रधारा पात्र अभिषेक” है, जिसमें प्राचीन बावड़ियों एवं पवित्र कुओं के दिव्य जल से साधक का अभिषेक कर आध्यात्मिक शुद्धिकरण एवं दोष निवारण किया जाता है।
@@ -342,8 +342,8 @@ function ChapterProblems() {
       <div className="relative mx-auto max-w-6xl px-6 md:px-12">
         <motion.div style={{ y: headY }} className="max-w-2xl">
           <ChapterLabel n="अध्याय दो" label="Problems it dissolves" />
-          <h2 className="mt-5 font-deva text-4xl leading-tight text-gradient-gold sm:text-5xl">
-            यह पूजा कौन-से कष्ट दूर करती है?
+          <h2 className="mt-5 font-deva text-4xl leading-[1.5] text-gradient-gold sm:text-5xl">
+            यह पूजा कौन - से कष्ट दूर करती है?
           </h2>
           <p className="mt-6 font-display text-lg italic text-foreground/70">
             जब कारण अदृश्य हो — समाधान भी दिव्य ही होता है।
@@ -452,7 +452,7 @@ function ChapterRitual() {
       <div className="relative mx-auto max-w-5xl">
         <div className="text-center">
           <ChapterLabel n="अध्याय तीन" label="The Ritual unfolds" />
-          <h2 className="mt-5 font-deva text-4xl leading-tight text-gradient-gold sm:text-5xl">
+          <h2 className="mt-5 font-deva text-4xl leading-[1.6] text-gradient-gold sm:text-5xl">
             यह महापूजा कैसे की जाती है?
           </h2>
           <p className="mx-auto mt-6 max-w-2xl font-display text-lg italic text-foreground/70">
@@ -530,7 +530,7 @@ function ChapterSwami() {
 
       <motion.div style={{ y: textY }} className="relative max-w-xl">
         <ChapterLabel n="अध्याय चार" label="Performed only by" />
-        <h2 className="mt-5 font-deva text-4xl leading-tight text-gradient-gold sm:text-5xl">
+        <h2 className="mt-5 font-deva text-4xl leading-[1.5] text-gradient-gold sm:text-5xl">
           केवल पूज्य स्वामी जी के
           <br />
           कर-कमलों से
@@ -566,7 +566,7 @@ function Closing() {
       <Embers count={18} />
       <div className="relative mx-auto max-w-3xl">
         <Leaf className="mx-auto h-8 w-8 text-gold/70" />
-        <h2 className="mt-6 font-deva text-4xl leading-tight text-gradient-gold sm:text-5xl">
+        <h2 className="mt-6 font-deva text-4xl leading-[1.5] text-gradient-gold sm:text-5xl">
           माँ की कृपा एक बार पुकारिए
         </h2>
         <p className="mt-6 font-display text-lg italic text-foreground/75">
@@ -577,20 +577,98 @@ function Closing() {
           अथवा संपर्क करें।
         </p>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-4">
-          <a
-            href="/"
-            className="rounded-full bg-gradient-gold px-7 py-3 text-sm font-semibold text-night shadow-glow transition hover:scale-[1.03]"
-          >
-            जानिए मंदिर के बारे में
-          </a>
-          <Link
-            to="/"
-            className="rounded-full border border-gold/40 px-7 py-3 text-sm text-gold transition hover:bg-gold/10"
-          >
-            मुख्य पृष्ठ पर लौटें
-          </Link>
-        </div>
+        <div className="mt-12 flex flex-wrap justify-center gap-4">
+
+  
+
+  {/* CONTACT */}
+
+  <a
+  href="tel:09669401930"
+    className="
+      rounded-full
+
+      border
+      border-gold/40
+
+      bg-gold/10
+
+      px-7
+      py-3
+
+      text-sm
+
+      text-gold
+
+      backdrop-blur-md
+
+      transition-all
+      duration-300
+
+      hover:bg-gold/20
+      hover:scale-[1.04]
+    "
+  >
+    संपर्क करें
+  </a>
+
+  {/* DONATION */}
+
+  <a
+    href="/donate"
+    className="
+      rounded-full
+
+      bg-[#7a1f10]
+
+      px-7
+      py-3
+
+      text-sm
+
+      text-[#ffe7b0]
+
+      shadow-[0_0_25px_rgba(180,70,20,0.25)]
+
+      transition-all
+      duration-300
+
+      hover:scale-[1.04]
+      hover:bg-[#942b15]
+    "
+  >
+    दान करें
+  </a>
+
+  {/* OTHER PUJAS */}
+
+  <a
+    href="/puja"
+    className="
+      rounded-full
+
+      border
+      border-gold/30
+
+      px-7
+      py-3
+
+      text-sm
+
+      text-gold-soft
+
+      transition-all
+      duration-300
+
+      hover:bg-gold/10
+      hover:scale-[1.04]
+    "
+  >
+    अन्य पूजाएँ
+  </a>
+
+  
+</div>
       </div>
     </section>
   );

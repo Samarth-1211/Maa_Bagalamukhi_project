@@ -9,6 +9,8 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { Navbar } from "@/components/temple/Navbar";
+import { Footer } from "@/components/temple/Footer";
 
 function NotFoundComponent() {
   return (
@@ -147,7 +149,13 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+    <Navbar />
+
+    <main className="relative min-h-screen overflow-x-hidden">
       <Outlet />
+    </main>
+  
+    <Footer />
     </QueryClientProvider>
   );
 }

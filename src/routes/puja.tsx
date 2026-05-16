@@ -6,6 +6,13 @@ import {
   useSpring,
 } from "framer-motion";
 import { useRef } from "react";
+import yantra from "@/assets/yantra.png";
+import photo_gallery_1 from "@/assets/photo_gallery_1.png";
+import photo_gallery_2 from "@/assets/photo_gallery_2.jpeg";
+import photo_gallery_3 from "@/assets/photo_gallery_3.png";
+import photo_gallery_4 from "@/assets/photo_gallery_4.png";
+import photo_gallery_5 from "@/assets/photo_gallery_5.jpg";
+import photo_gallery_6 from "@/assets/photo_gallery_6.png";
 
 import {
   Flame,
@@ -34,7 +41,7 @@ import {
 import sanctum from "@/assets/mandir-sanctum.jpg";
 import havan from "@/assets/havan.jpg";
 import aarti from "@/assets/aarti-diyas.jpg";
-import yantra from "@/assets/yantra.png";
+import yantra_circle from "@/assets/yantra.png";
 
 export const Route = createFileRoute("/puja")({
   component: PujasPage,
@@ -67,7 +74,7 @@ const chapters: Chapter[] = [
       "माँ पीताम्बरा की दिव्य आराधना से जुड़ी प्राचीन एवं सिद्ध पूजाएँ।",
     pujas: [
       {
-        title: "माँ बगलामुखी महापूजा",
+        title: "माँ बगलामुखी दिव्य महायज्ञ",
         what:
           "पूर्ण वैदिक एवं तांत्रिक पद्धति से संपन्न होने वाली प्रमुख साधना।",
         problem:
@@ -77,7 +84,7 @@ const chapters: Chapter[] = [
         icon: Flame,
       },
       {
-        title: "विशेष बगलामुखी अनुष्ठान",
+        title: "विशिष्ट बगलामुखी अनुष्ठान",
         what:
           "3, 5, 7 एवं 11 दिवसीय शक्तिशाली संकल्प साधना।",
         problem:
@@ -87,7 +94,7 @@ const chapters: Chapter[] = [
         icon: ShieldCheck,
       },
       {
-        title: "बगलामुखी महामंत्र जाप",
+        title: "सिद्ध बगलामुखी महामंत्र जाप",
         what:
           "माँ के मूल बीज मंत्रों का शक्तिशाली जाप।",
         problem:
@@ -176,6 +183,287 @@ const chapters: Chapter[] = [
       },
     ],
   },
+
+  {
+    label: "Chapter Four",
+  
+    heading: "दोष निवारण महाअनुष्ठान",
+  
+    intro:
+      "जीवन में उपस्थित ग्रह, पितृ, तांत्रिक एवं अदृश्य बाधाओं की शांति हेतु सिद्ध एवं दिव्य अनुष्ठान।",
+  
+    pujas: [
+      {
+        title: "सिद्ध कालसर्प दोष महाशांति",
+  
+        what:
+          "राहु-केतु जनित कालसर्प योग की शांति हेतु दिव्य वैदिक एवं तांत्रिक साधना।",
+  
+        problem:
+          "जीवन में लगातार रुकावट, भय, अस्थिरता एवं कार्य असफलता।",
+  
+        how:
+          "नाग पूजन, कालसर्प शांति मंत्र जाप एवं विशेष अग्निहोत्र हवन।",
+  
+        icon: Orbit,
+      },
+  
+      {
+        title: "पितृ कृपा एवं दोष निवारण महायज्ञ",
+  
+        what:
+          "पूर्वजों की शांति एवं पितृ आशीर्वाद प्राप्ति हेतु विशेष वैदिक अनुष्ठान।",
+  
+        problem:
+          "संतान बाधा, आर्थिक कष्ट, पारिवारिक तनाव एवं मानसिक अशांति।",
+  
+        how:
+          "तर्पण, पिंडदान, पितृ सूक्त पाठ एवं श्राद्ध हवन।",
+  
+        icon: Sun,
+      },
+  
+      {
+        title: "लक्ष्मी विषकन्या दोष निवारण महापूजा",
+  
+        what:
+          "अत्यंत दुर्लभ एवं सिद्ध तांत्रिक साधना जो जीवन की नकारात्मक ऊर्जा को शांति प्रदान करती है।",
+  
+        problem:
+          "धन हानि, वैवाहिक बाधा, मानसिक क्लेश एवं अचानक जीवन संकट।",
+  
+        how:
+          "सहस्रधारा अभिषेक, बीज मंत्र साधना एवं विशेष तांत्रिक हवन।",
+  
+        icon: Gem,
+      },
+    ],
+  },
+
+  {
+    label: "Chapter Five",
+  
+    heading: "ग्रह शांति एवं ज्योतिषीय महाअनुष्ठान",
+  
+    intro:
+      "ग्रह पीड़ा, महादशा, अशुभ योग एवं ज्योतिषीय दोषों की शांति हेतु सिद्ध वैदिक एवं तांत्रिक साधनाएँ।",
+  
+    pujas: [
+      {
+        title: "नवग्रह शांति महायज्ञ",
+  
+        what:
+          "नवग्रह संतुलन एवं ग्रह कृपा प्राप्ति हेतु दिव्य वैदिक अनुष्ठान।",
+  
+        problem:
+          "ग्रह पीड़ा, जीवन अस्थिरता एवं कार्यों में बाधा।",
+  
+        how:
+          "नवग्रह बीज मंत्र जाप, यज्ञ एवं विशेष हवन।",
+  
+        icon: Sun,
+      },
+  
+      {
+        title: "शनि पीड़ा निवारण साधना",
+  
+        what:
+          "शनि दोष, साढ़ेसाती एवं ढैय्या शांति हेतु शक्तिशाली पूजा।",
+  
+        problem:
+          "आर्थिक संघर्ष, रुकावट, मानसिक तनाव एवं कर्म बाधा।",
+  
+        how:
+          "तैलाभिषेक, शनि स्तोत्र पाठ एवं तांत्रिक हवन।",
+  
+        icon: Moon,
+      },
+  
+      {
+        title: "राहु-केतु ग्रह शांति महापूजा",
+  
+        what:
+          "राहु एवं केतु ग्रह जनित दोषों की शांति हेतु सिद्ध साधना।",
+  
+        problem:
+          "भ्रम, भय, मानसिक तनाव एवं अचानक संकट।",
+  
+        how:
+          "कालसर्प शांति मंत्र जाप, अभिषेक एवं विशेष अग्निहोत्र।",
+  
+        icon: Orbit,
+      },
+    ],
+  },
+
+  {
+    label: "Chapter Six",
+  
+    heading: "तंत्र एवं शक्ति महाअनुष्ठान",
+  
+    intro:
+      "माँ पीताम्बरा बगलामुखी की सिद्ध तांत्रिक शक्तियों, गुप्त साधनाओं एवं दिव्य ऊर्जा से जुड़ी विशेष अनुष्ठान प्रक्रियाएँ।",
+  
+    pujas: [
+      {
+        title: "दशमहाविद्या सिद्ध साधना",
+  
+        what:
+          "दशमहाविद्याओं की उच्च कोटि तांत्रिक एवं आध्यात्मिक साधना।",
+  
+        problem:
+          "गूढ़ आध्यात्मिक बाधाएँ, भय एवं नकारात्मक ऊर्जा।",
+  
+        how:
+          "गोपनीय बीज मंत्र जाप, रात्रि साधना एवं विशेष हवन।",
+  
+        icon: Crown,
+      },
+  
+      {
+        title: "शत्रु बाधा नाशक महाअनुष्ठान",
+  
+        what:
+          "शत्रु शमन, रक्षा एवं विजय प्राप्ति हेतु शक्तिशाली तांत्रिक साधना।",
+  
+        problem:
+          "विरोधी, कोर्ट केस, मानसिक भय एवं जीवन संघर्ष।",
+  
+        how:
+          "हल्दी हवन, रक्षा कवच साधना एवं बीज मंत्र अनुष्ठान।",
+  
+        icon: Swords,
+      },
+  
+      {
+        title: "देवी शक्ति साधना महायज्ञ",
+  
+        what:
+          "माँ शक्ति की दिव्य कृपा एवं आध्यात्मिक ऊर्जा प्राप्ति हेतु विशेष अनुष्ठान।",
+  
+        problem:
+          "आध्यात्मिक कमजोरी, भय एवं नकारात्मक प्रभाव।",
+  
+        how:
+          "बीज मंत्र जाप, चंडी पाठ एवं दिव्य अग्निहोत्र हवन।",
+  
+        icon: Sparkles,
+      },
+    ],
+  },
+
+  {
+    label: "Chapter Seven",
+  
+    heading: "धन, व्यापार एवं समृद्धि महाअनुष्ठान",
+  
+    intro:
+      "धन प्राप्ति, व्यापार वृद्धि, आर्थिक उन्नति एवं समृद्ध जीवन हेतु सिद्ध वैदिक एवं तांत्रिक साधनाएँ।",
+  
+    pujas: [
+      {
+        title: "महालक्ष्मी धन प्राप्ति महापूजा",
+  
+        what:
+          "माँ महालक्ष्मी की कृपा एवं धन आकर्षण हेतु दिव्य अनुष्ठान।",
+  
+        problem:
+          "धन रुकावट, आर्थिक अस्थिरता एवं आय में बाधा।",
+  
+        how:
+          "श्रीसूक्त पाठ, कनकधारा स्तोत्र एवं विशेष लक्ष्मी हवन।",
+  
+        icon: Coins,
+      },
+  
+      {
+        title: "व्यापार वृद्धि एवं सफलता साधना",
+  
+        what:
+          "व्यवसाय उन्नति एवं कार्य सिद्धि हेतु शक्तिशाली तांत्रिक अनुष्ठान।",
+  
+        problem:
+          "व्यापार हानि, आर्थिक रुकावट एवं कार्य असफलता।",
+  
+        how:
+          "कुबेर पूजन, श्री यंत्र साधना एवं विशेष महायज्ञ।",
+  
+        icon: Briefcase,
+      },
+  
+      {
+        title: "ऋण मुक्ति एवं कर्ज निवारण महायज्ञ",
+  
+        what:
+          "ऋण मुक्ति एवं आर्थिक राहत हेतु दिव्य वैदिक साधना।",
+  
+        problem:
+          "कर्ज, आर्थिक दबाव एवं धन संबंधी तनाव।",
+  
+        how:
+          "ऋणमोचन मंगल स्तोत्र पाठ, हवन एवं अग्निहोत्र अनुष्ठान।",
+  
+        icon: Gem,
+      },
+    ],
+  },
+
+  {
+    label: "Chapter Eight",
+  
+    heading: "विशेष वैदिक महायज्ञ एवं दिव्य हवन",
+  
+    intro:
+      "प्राचीन वैदिक परंपराओं, दिव्य मंत्रों एवं सिद्ध अनुष्ठान विधियों से संपन्न विशेष यज्ञ, पाठ एवं अग्निहोत्र साधनाएँ।",
+  
+    pujas: [
+      {
+        title: "महामृत्युंजय महाअनुष्ठान",
+  
+        what:
+          "भगवान शिव की कृपा, दीर्घायु एवं आरोग्य प्राप्ति हेतु दिव्य साधना।",
+  
+        problem:
+          "रोग, भय, अकाल संकट एवं नकारात्मक ऊर्जा।",
+  
+        how:
+          "1.25 लाख महामृत्युंजय जाप, रुद्राभिषेक एवं विशेष हवन।",
+  
+        icon: HeartPulse,
+      },
+  
+      {
+        title: "दुर्गा सप्तशती चंडी महायज्ञ",
+  
+        what:
+          "माँ दुर्गा की कृपा एवं शक्ति प्राप्ति हेतु दिव्य पाठ एवं साधना।",
+  
+        problem:
+          "भय, बाधा, शत्रु प्रभाव एवं नकारात्मक शक्तियाँ।",
+  
+        how:
+          "नवचंडी पाठ, बीज मंत्र जाप एवं चंडी हवन।",
+  
+        icon: Flame,
+      },
+  
+      {
+        title: "वैदिक हवन एवं अग्निहोत्र महायज्ञ",
+  
+        what:
+          "समस्त वैदिक अग्नि अनुष्ठानों एवं दिव्य यज्ञ प्रक्रियाओं का विशेष आयोजन।",
+  
+        problem:
+          "गृह अशांति, वास्तु दोष एवं आध्यात्मिक बाधाएँ।",
+  
+        how:
+          "वैदिक मंत्रोच्चार, अग्निहोत्र एवं पूर्णाहुति अनुष्ठान।",
+  
+        icon: Droplets,
+      },
+    ],
+  },
+
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -195,7 +483,7 @@ function SacredBackground() {
   
         {/* CHAKRA 1 */}
         <motion.img
-          src={yantra}
+          src={yantra_circle}
           alt=""
           animate={{ rotate: 360 }}
           transition={{
@@ -327,8 +615,8 @@ function PujaCard({
 
         <div className="mt-6 space-y-5">
           <div>
-            <div className="mb-2 text-xs uppercase tracking-[0.3em] text-yellow-300">
-              What
+            <div className="mb-2 text-sm uppercase tracking-[0.08em] text-yellow-300">
+            महापूजा का स्वरूप
             </div>
 
             <p className="font-deva leading-relaxed text-white/80">
@@ -337,8 +625,8 @@ function PujaCard({
           </div>
 
           <div>
-            <div className="mb-2 text-xs uppercase tracking-[0.3em] text-orange-300">
-              Problem
+            <div className="mb-2 text-ms uppercase tracking-[0.08em] text-orange-300">
+            दोष एवं बाधाएँ
             </div>
 
             <p className="font-deva leading-relaxed text-white/80">
@@ -347,8 +635,8 @@ function PujaCard({
           </div>
 
           <div>
-            <div className="mb-2 text-xs uppercase tracking-[0.3em] text-yellow-100">
-              Ritual Process
+            <div className="mb-2 text-ms uppercase tracking-[0.08em] text-yellow-100">
+            वैदिक अनुष्ठान प्रक्रिया
             </div>
 
             <p className="font-deva leading-relaxed text-white/80">
@@ -467,6 +755,373 @@ function ChapterSection({
 /* -------------------------------------------------------------------------- */
 /*                                   PAGE                                     */
 /* -------------------------------------------------------------------------- */
+const seoPujas = [
+  "कालसर्प दोष पूजा उज्जैन",
+  "बगलामुखी पूजा उज्जैन",
+  "मंगल दोष निवारण",
+  "नवग्रह शांति पूजा",
+  "शत्रु नाशक पूजा",
+  "पितृ दोष पूजा",
+  "महामृत्युंजय जाप",
+  "राहु-केतु शांति",
+  "तंत्र बाधा निवारण",
+  "कुंडली दोष निवारण",
+  "व्यापार वृद्धि पूजा",
+  "धन प्राप्ति पूजा",
+];
+
+
+function SacredMarquee() {
+  return (
+    <div className="relative overflow-hidden border-y border-yellow-500/20 bg-black/30 backdrop-blur-xl py-5">
+      
+      {/* glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,190,40,0.12),transparent_70%)]" />
+
+      {/* left fade */}
+      <div className="absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-[#070304] to-transparent" />
+
+      {/* right fade */}
+      <div className="absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-[#070304] to-transparent" />
+
+      <motion.div
+        animate={{
+          x: ["0%", "-50%"],
+        }}
+        transition={{
+          duration: 28,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+        className="flex w-max items-center gap-6 whitespace-nowrap"
+      >
+        {[...seoPujas, ...seoPujas].map((text, i) => (
+          <div
+            key={i}
+            className="
+              flex
+              items-center
+              gap-6
+
+              rounded-full
+
+              border
+              border-yellow-400/15
+
+              bg-yellow-400/[0.05]
+
+              px-7
+              py-3
+
+              shadow-[0_0_30px_rgba(255,190,40,0.08)]
+
+              backdrop-blur-md
+            "
+          >
+            <Sparkles className="h-4 w-4 text-yellow-300" />
+
+            <span
+              className="
+                font-deva
+
+                text-base
+                md:text-lg
+
+                leading-[1.6]
+
+                text-yellow-100
+              "
+            >
+              {text}
+            </span>
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  );
+}
+
+const galleryImages = [
+  {
+    image: photo_gallery_1,
+    title: "माँ बगलामुखी दिव्य महायज्ञ",
+    alt: "माँ बगलामुखी मंदिर उज्जैन का दिव्य श्रृंगार",
+  },
+
+  {
+    image: photo_gallery_2,
+    title: "विशेष हवन एवं अनुष्ठान",
+    alt: "बगलामुखी महाहवन उज्जैन",
+  },
+
+  {
+    image: photo_gallery_3,
+    title: "माँ का अलौकिक दरबार",
+    alt: "माँ पीताम्बरा बगलामुखी दरबार",
+  },
+
+  {
+    image: photo_gallery_4,
+    title: "रात्रि दिव्य आरती",
+    alt: "उज्जैन मंदिर रात्रि आरती",
+  },
+
+  {
+    image: photo_gallery_5,
+    title: "तांत्रिक साधना एवं पूजा",
+    alt: "बगलामुखी तांत्रिक साधना",
+  },
+  {
+    image: photo_gallery_6,
+    title: "माँ पीताम्बरा का अलौकिक स्वरूप",
+    alt: "बगलामुखी तांत्रिक साधना",
+  },
+];
+
+function SacredGallery() {
+  return (
+    <section className="relative overflow-hidden py-36">
+      
+      {/* background glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,190,40,0.08),transparent_70%)]" />
+
+      {/* rotating yantra */}
+      <motion.img
+        src={yantra}
+        alt=""
+        animate={{ rotate: 360 }}
+        transition={{
+          duration: 220,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+        className="
+          absolute
+          left-1/2
+          top-1/2
+          -z-10
+          h-[90vh]
+          w-[90vh]
+          -translate-x-1/2
+          -translate-y-1/2
+          opacity-[0.03]
+        "
+      />
+
+      <div className="relative mx-auto max-w-7xl px-6">
+        
+        {/* heading */}
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 40,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 1,
+          }}
+          className="mx-auto mb-24 max-w-3xl text-center"
+        >
+          <div className="mb-5 text-xs uppercase tracking-[0.45em] text-yellow-300">
+            Divine Gallery
+          </div>
+
+          <h2
+            className="
+              font-deva
+
+              text-5xl
+              md:text-7xl
+
+              leading-[1.45]
+              md:leading-[1.3]
+
+              text-white
+            "
+          >
+            दिव्य दर्शन
+            <br />
+
+            <span className="text-gradient-gold">
+              गैलरी
+            </span>
+          </h2>
+
+          <p
+            className="
+              mx-auto
+              mt-8
+              max-w-2xl
+
+              font-deva
+
+              text-lg
+
+              leading-[1.9]
+
+              text-white/70
+            "
+          >
+            माँ पीताम्बरा बगलामुखी मंदिर के दिव्य
+            अनुष्ठान, आरती, साधना एवं आध्यात्मिक
+            वातावरण के अलौकिक दृश्य।
+          </p>
+        </motion.div>
+
+        {/* masonry gallery */}
+        <div
+        className="
+          grid
+          grid-cols-1
+          md:grid-cols-2
+          xl:grid-cols-3 gap-6"> 
+          {galleryImages.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{
+                opacity: 0,
+                y: 80,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.8,
+                delay: index * 0.08,
+              }}
+              whileHover={{
+                y: -10,
+              }}
+              className="
+                group
+                relative
+                mb-6
+                overflow-hidden
+                rounded-[2rem]
+
+                border
+                border-yellow-400/15
+
+                bg-white/5
+
+                backdrop-blur-xl
+              "
+            >
+              
+              {/* glow */}
+              <div
+                className="
+                  absolute
+                  inset-0
+                  z-10
+
+                  bg-gradient-to-t
+                  from-black/80
+                  via-black/10
+                  to-transparent
+                "
+              />
+
+              {/* image */}
+              <motion.img
+                src={item.image}
+                alt={item.alt}
+                loading="lazy"
+                whileHover={{
+                  scale: 1.06,
+                }}
+                transition={{
+                  duration: 0.7,
+                }}
+                className="
+                  h-full
+                  w-full
+                  object-cover
+                "
+              />
+
+              {/* floating glow */}
+              <div
+                className="
+                  absolute
+                  -right-10
+                  -top-10
+
+                  h-40
+                  w-40
+
+                  rounded-full
+
+                  bg-yellow-300/10
+
+                  blur-3xl
+                "
+              />
+
+              {/* caption */}
+              <div
+                className="
+                  absolute
+                  bottom-0
+                  left-0
+                  z-20
+
+                  w-full
+
+                  p-6
+                "
+              >
+                <div
+                  className="
+                    inline-flex
+                    items-center
+                    gap-2
+
+                    rounded-full
+
+                    border
+                    border-yellow-300/20
+
+                    bg-yellow-300/10
+
+                    px-4
+                    py-2
+
+                    backdrop-blur-md
+                  "
+                >
+                  <Sparkles className="h-4 w-4 text-yellow-300" />
+
+                  <span
+                    className="
+                      font-deva
+
+                      text-sm
+
+                      leading-[1.6]
+
+                      text-yellow-50
+                    "
+                  >
+                    {item.title}
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
 
 function PujasPage() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -511,7 +1166,7 @@ function PujasPage() {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="absolute inset-0 h-full w-full object-cover opacity-30 mix-blend-screen"
+            className="absolute inset-0  h-[420px] w-full object-cover opacity-30 mix-blend-screen"
           />
 
           <div className="absolute inset-0 bg-black/65" />
@@ -566,7 +1221,7 @@ function PujasPage() {
             }}
             className="font-deva text-6xl leading-tight text-white md:text-8xl"
           >
-            समस्त पूजा
+            समस्त पूजा , हवन
             <br />
             एवं अनुष्ठान
           </motion.h1>
@@ -620,6 +1275,12 @@ function PujasPage() {
           </motion.div>
         </div>
       </section>
+      
+      {/* SACRED SEO MARQUEE */}
+      <SacredMarquee />
+
+      {/* SACRED PHOTO GALLERY */}
+<SacredGallery />
 
       {/* CHAPTERS */}
       {chapters.map((chapter, idx) => (
@@ -629,6 +1290,8 @@ function PujasPage() {
           image={chapterImages[idx % chapterImages.length]}
         />
       ))}
+
+   
 
       {/* GURU SECTION */}
       <section className="relative overflow-hidden py-36">
@@ -724,10 +1387,10 @@ function PujasPage() {
                 </Link>
 
                 <Link
-                  to="/"
+                  to="/donate"
                   className="rounded-full border border-white/15 bg-white/5 px-10 py-5 font-semibold text-white backdrop-blur-md transition hover:border-yellow-300/40"
                 >
-                  मुख्य पृष्ठ
+                  धर्मार्थ सहयोग करें
                 </Link>
               </div>
             </div>

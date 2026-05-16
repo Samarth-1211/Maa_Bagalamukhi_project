@@ -81,34 +81,10 @@ function DonatePage() {
         }}
       />
 
-      {/* top bar */}
-      <header className="relative z-10 mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
-        <Link
-          to="/"
-          className="inline-flex items-center gap-2 text-sm text-ivory/80 transition hover:text-gold"
-          style={{ fontFamily: '"Cinzel", serif', letterSpacing: "0.15em" }}
-        >
-          <ArrowLeft className="h-4 w-4" /> HOME
-        </Link>
-        <span
-          className="text-xs uppercase tracking-[0.4em] text-gold/80"
-          style={{ fontFamily: '"Cinzel", serif' }}
-        >
-          ॥ Seva ॥
-        </span>
-      </header>
 
       {/* hero heading */}
-      <section className="relative z-10 mx-auto max-w-4xl px-6 pt-6 text-center">
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="text-xs uppercase tracking-[0.5em] text-gold"
-          style={{ fontFamily: '"Cinzel", serif' }}
-        >
-          दान · दान महिमा · Daan
-        </motion.p>
+      <section className="relative z-10 mx-auto max-w-4xl px-6 pt-24 text-center">
+     
         <motion.h1
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}

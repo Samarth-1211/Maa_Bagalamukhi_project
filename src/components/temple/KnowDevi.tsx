@@ -34,15 +34,18 @@ export function KnowDevi() {
   const imgY = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
 
   return (
-    <section id="about" ref={ref} className="relative py-32 px-6 lg:px-10 overflow-hidden">
+    <section id="about" ref={ref} className="relative py-32 px-6 lg:px-10 overflow-visible">
       <div className="mx-auto max-w-7xl">
         <Reveal>
           <div className="text-center mb-20 max-w-3xl mx-auto">
             <span className="text-xs tracking-[0.4em] uppercase text-vermillion font-display">
               ✦ देवी परिचय ✦
             </span>
-            <h2 className="mt-5 font-hindi text-5xl md:text-7xl text-ivory leading-tight">
-              <span className="text-gradient-gold">देवी</span> को जानें
+            <br/>
+            <br/>
+            <h2 className="mt-8 font-hindi text-5xl md:text-7xl text-ivory leading-[3.5] md:leading-[1.3]   overflow-visible tracking-[0.01em] pb-4 ">
+              
+            <span className="text-gradient-gold inline-block pb-4">माँ</span> की दिव्य महिमा
             </h2>
             <div className="mt-6 mx-auto w-48 gold-divider" />
           </div>

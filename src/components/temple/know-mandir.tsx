@@ -82,7 +82,6 @@ function KnowMandirPage() {
       <ChapterThree />
       <ChapterFour />
       <ChapterFive />
-      <Closing />
     </main>
   );
 }
@@ -140,7 +139,7 @@ function Intro() {
           className="relative z-10 flex flex-col items-center text-center"
         >
          
-          <h1 className="mt-6 font-deva text-5xl leading-[1.05] sm:text-7xl md:text-8xl text-gradient-gold">
+          <h1 className="mt-6 font-deva text-5xl leading-[1.5] sm:text-7xl md:text-8xl text-gradient-gold">
             जानिए माँ के
             <br />
             दिव्य धाम को
@@ -173,66 +172,458 @@ function Intro() {
 /* --------------------------- CHAPTER 1: where it stands --------------------------- */
 function ChapterOne() {
   const ref = useRef<HTMLDivElement>(null);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
-  const smooth = useSpring(scrollYProgress, { damping: 30, stiffness: 90 });
-  const imgScale = useTransform(smooth, [0, 1], [1.2, 1]);
-  const imgY = useTransform(smooth, [0, 1], ["-10%", "10%"]);
-  const textY = useTransform(smooth, [0, 1], ["20%", "-20%"]);
+
+  const smooth = useSpring(scrollYProgress, {
+    damping: 30,
+    stiffness: 90,
+  });
+
+  const imgScale = useTransform(
+    smooth,
+    [0, 1],
+    [1.2, 1]
+  );
+
+  const imgY = useTransform(
+    smooth,
+    [0, 1],
+    ["-10%", "10%"]
+  );
+
+  const textY = useTransform(
+    smooth,
+    [0, 1],
+    ["20%", "-20%"]
+  );
 
   return (
     <section
       ref={ref}
-      className="relative grid min-h-screen grid-cols-1 items-center gap-12 overflow-hidden border-t border-gold/10 px-6 py-32 md:grid-cols-2 md:px-16"
+      className="
+        relative
+
+        grid
+        min-h-screen
+        grid-cols-1
+
+        items-center
+        gap-16
+
+        overflow-hidden
+
+        border-t
+        border-gold/10
+
+        px-6
+        py-32
+
+        md:grid-cols-2
+        md:px-16
+      "
     >
+      {/* BACKGROUND AURA */}
+
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,oklch(0.32_0.12_25/0.4),transparent_60%)]" />
 
-      <motion.div style={{ y: imgY }} className="relative">
+      {/* -------------------------------------------------------------------------- */}
+      {/*                               LEFT IMAGE                                    */}
+      {/* -------------------------------------------------------------------------- */}
+
+      <motion.div
+        style={{ y: imgY }}
+        className="relative"
+      >
         <motion.div
           style={{ scale: imgScale }}
-          className="ring-gold relative aspect-[4/5] overflow-hidden rounded-2xl glow-gold"
+          className="
+            ring-gold
+
+            relative
+
+            aspect-[4/5]
+
+            overflow-hidden
+
+            rounded-3xl
+
+            glow-gold
+          "
         >
           <img
             src={mandirExterior}
             alt="मंदिर का बाहरी दृश्य"
-            className="h-full w-full object-cover"
+            className="
+              h-full
+              w-full
+              object-cover
+            "
             loading="lazy"
             width={1920}
             height={1080}
           />
+
+          {/* IMAGE OVERLAY */}
+
           <div className="absolute inset-0 bg-gradient-to-t from-night-deep via-transparent to-transparent" />
         </motion.div>
-        <div className="absolute -bottom-6 -right-6 hidden md:block">
-          <div className="rounded-xl border border-gold/30 bg-night/80 px-5 py-3 backdrop-blur">
-            <p className="flex items-center gap-2 text-xs text-gold-soft">
+
+        {/* FLOATING ADDRESS CARD */}
+
+        <div
+          className="
+            absolute
+
+            -bottom-6
+            -right-2
+
+            hidden
+            md:block
+          "
+        >
+          <div
+            className="
+              rounded-2xl
+
+              border
+              border-gold/20
+
+              bg-night/80
+
+              px-6
+              py-4
+
+              backdrop-blur-xl
+
+              shadow-[0_0_30px_rgba(255,180,0,0.08)]
+            "
+          >
+            <p
+              className="
+                flex
+                items-center
+                gap-2
+
+                text-xs
+
+                leading-[1.9]
+
+                text-gold-soft
+              "
+            >
               <MapPin className="h-3.5 w-3.5" />
+
               मुरलीपुरा · बड़नगर मेन रोड · उज्जैन
             </p>
           </div>
         </div>
       </motion.div>
 
-      <motion.div style={{ y: textY }} className="relative max-w-xl">
-        <ChapterLabel  label="A Sacred Address" />
-        <h2 className="mt-5 font-deva text-4xl leading-tight text-gradient-gold sm:text-5xl">
+      {/* -------------------------------------------------------------------------- */}
+      {/*                              RIGHT CONTENT                                  */}
+      {/* -------------------------------------------------------------------------- */}
+
+      <motion.div
+        style={{ y: textY }}
+        className="relative max-w-xl"
+      >
+        <ChapterLabel
+          label="A Sacred Address"
+        />
+
+        {/* TITLE */}
+
+        <h2
+          className="
+            mt-5
+
+            font-deva
+
+            text-4xl
+            sm:text-5xl
+
+            leading-[1.5]
+
+            overflow-visible
+
+            text-gradient-gold
+          "
+        >
           जहाँ माँ का धाम है
         </h2>
-        <p className="mt-6 font-display text-lg leading-relaxed text-foreground/80">
+
+        {/* DESCRIPTION */}
+
+        <p
+          className="
+            mt-6
+
+            font-display
+
+            text-lg
+
+            leading-[2.15]
+
+            text-foreground/80
+
+            overflow-visible
+          "
+        >
           मध्यप्रदेश की पावन नगरी{" "}
-          <span className="text-gold">उज्जैन</span> में, मुरलीपुरा बड़नगर मेन रोड पर
-          स्थित यह दिव्य सिद्धपीठ — जहाँ पहुँचते ही मन शांत हो जाता है।
+          <span className="text-gold">
+            उज्जैन
+          </span>{" "}
+          में, मुरलीपुरा बड़नगर मेन रोड पर
+          स्थित यह दिव्य सिद्धपीठ —
+          जहाँ पहुँचते ही मन शांत हो जाता है।
         </p>
+
+        {/* STATS */}
+
         <div className="mt-8 grid grid-cols-2 gap-4">
-          <Stat k="3 KM" v="महाकालेश्वर से दूरी" />
-          <Stat k="सिद्ध" v="साधना पीठ" />
+          <Stat
+            k="3 KM"
+            v="महाकालेश्वर से दूरी"
+          />
+
+          <Stat
+            k="सिद्ध"
+            v="साधना पीठ"
+          />
         </div>
+
+        {/* -------------------------------------------------------------------------- */}
+        {/*                               MAP CARD                                      */}
+        {/* -------------------------------------------------------------------------- */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.9,
+            ease: [0.16, 1, 0.3, 1],
+          }}
+          viewport={{ once: true }}
+          className="
+            mt-10
+
+            overflow-hidden
+
+            rounded-3xl
+
+            border
+            border-gold/15
+
+            bg-night/70
+
+            backdrop-blur-xl
+
+            shadow-[0_0_40px_rgba(255,180,0,0.08)]
+          "
+        >
+          {/* MAP */}
+
+          <div className="relative h-[240px] overflow-hidden">
+
+            <iframe
+              src="https://www.google.com/maps?q=Maa+Pitambara+Bagalamukhi+Mandir+Ujjain&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="
+                absolute
+                inset-0
+
+                h-full
+                w-full
+
+                border-0
+              "
+            />
+
+            {/* MAP OVERLAY */}
+
+            <div
+              className="
+                absolute
+                inset-0
+
+                bg-gradient-to-t
+                from-night-deep/80
+                via-transparent
+                to-transparent
+              "
+            />
+
+            {/* LOCATION BADGE */}
+
+            <div
+              className="
+                absolute
+
+                left-4
+                top-4
+
+                inline-flex
+                items-center
+                gap-2
+
+                rounded-full
+
+                border
+                border-gold/20
+
+                bg-night/70
+
+                px-4
+                py-2
+
+                backdrop-blur-md
+              "
+            >
+              <MapPin className="h-4 w-4 text-gold" />
+
+              <span
+                className="
+                  text-[10px]
+
+                  uppercase
+
+                  tracking-[0.25em]
+
+                  text-gold
+                "
+                style={{
+                  fontFamily: '"Cinzel", serif',
+                }}
+              >
+                Ujjain · Madhya Pradesh
+              </span>
+            </div>
+          </div>
+
+          {/* MAP CONTENT */}
+
+          <div className="p-6">
+
+            <h3
+              className="
+                font-deva
+
+                text-2xl
+
+                leading-[1.6]
+
+                overflow-visible
+
+                text-gradient-gold
+              "
+            >
+              मंदिर तक पहुँचें
+            </h3>
+
+            <p
+              className="
+                mt-3
+
+                text-sm
+
+                leading-[2]
+
+                text-foreground/70
+              "
+            >
+              महाकालेश्वर ज्योतिर्लिंग से केवल
+              3 किलोमीटर दूर स्थित —
+              माँ बगलामुखी सिद्धपीठ तक
+              आसानी से पहुँचें।
+            </p>
+
+            {/* BUTTON */}
+
+            <a
+href="https://www.google.com/maps/dir/?api=1&destination=23.1835725,75.7365154&travelmode=driving"              rel="noopener noreferrer"
+              className="
+                group
+
+                relative
+
+                mt-6
+
+                inline-flex
+                items-center
+                gap-3
+
+                overflow-hidden
+
+                rounded-full
+
+                border
+                border-[#ffcc70]/40
+
+                bg-gradient-to-r
+                from-[#7a1f10]/90
+                via-[#b53a14]/90
+                to-[#f59e0b]/85
+
+                px-6
+                py-3
+
+                text-xs
+
+                uppercase
+
+                tracking-[0.22em]
+
+                text-[#fff4d6]
+
+                transition-all
+                duration-500
+
+                hover:scale-[1.04]
+
+                hover:shadow-[0_0_30px_rgba(255,170,60,0.35)]
+              "
+              style={{
+                fontFamily: '"Cinzel", serif',
+              }}
+            >
+              <div
+                className="
+                  absolute
+                  inset-0
+
+                  opacity-30
+
+                  blur-xl
+                "
+                style={{
+                  background:
+                    "radial-gradient(circle at center, rgba(255,180,60,0.45), transparent 70%)",
+                }}
+              />
+
+              <MapPin className="relative z-10 h-4 w-4" />
+
+              <span className="relative z-10">
+                Get Directions
+              </span>
+            </a>
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   );
 }
-
 function Stat({ k, v }: { k: string; v: string }) {
   return (
     <div className="ring-gold rounded-xl bg-night/60 px-5 py-4 backdrop-blur">
@@ -243,106 +634,429 @@ function Stat({ k, v }: { k: string; v: string }) {
 }
 
 /* --------------------------- CHAPTER 2: the deity reveal --------------------------- */
+/* --------------------------- CHAPTER 2: the deity reveal --------------------------- */
+
 function ChapterTwo() {
   const ref = useRef<HTMLDivElement>(null);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
 
-  const smooth = useSpring(scrollYProgress, { damping: 28, stiffness: 85 });
+  const smooth = useSpring(scrollYProgress, {
+    damping: 28,
+    stiffness: 85,
+  });
 
-  // curtains open more naturally
-  const leftX = useTransform(smooth, [0.12, 0.55], ["0%", "-110%"]);
-  const rightX = useTransform(smooth, [0.12, 0.55], ["0%", "110%"]);
+  /* -------------------------------------------------------------------------- */
+  /*                            CURTAIN ANIMATION                               */
+  /* -------------------------------------------------------------------------- */
 
-  // stronger reveal timing
-  const curtainOpacity = useTransform(smooth, [0, 0.18, 0.5], [1, 1, 0.15]);
-  const captionOpacity = useTransform(smooth, [0.48, 0.68], [0, 1]);
-  const captionY = useTransform(smooth, [0.48, 0.68], [45, 0]);
-  const imgScale = useTransform(smooth, [0, 1], [1.08, 1.18]);
-  const imgDim = useTransform(smooth, [0, 0.5, 1], [0.55, 0.35, 0.15]);
+  const leftX = useTransform(
+    smooth,
+    [0.12, 0.55],
+    ["0%", "-110%"]
+  );
+
+  const rightX = useTransform(
+    smooth,
+    [0.12, 0.55],
+    ["0%", "110%"]
+  );
+
+  const curtainOpacity = useTransform(
+    smooth,
+    [0, 0.18, 0.5],
+    [1, 1, 0.15]
+  );
+
+  /* -------------------------------------------------------------------------- */
+  /*                      TEXT APPEARS HALFWAY OPEN                             */
+  /* -------------------------------------------------------------------------- */
+
+  const captionOpacity = useTransform(
+    smooth,
+    [0.26, 0.46],
+    [0, 1]
+  );
+
+  const captionY = useTransform(
+    smooth,
+    [0.26, 0.46],
+    [80, 0]
+  );
+
+  /* -------------------------------------------------------------------------- */
+  /*                           IMAGE CINEMATICS                                 */
+  /* -------------------------------------------------------------------------- */
+
+  const imgScale = useTransform(
+    smooth,
+    [0, 1],
+    [1.08, 1.18]
+  );
+
+  const imgOpacity = useTransform(
+    smooth,
+    [0, 0.3, 1],
+    [0.95, 0.92, 1]
+  );
+
+  const imgDim = useTransform(
+    smooth,
+    [0, 0.5, 1],
+    [0.55, 0.35, 0.15]
+  );
 
   return (
-    <section ref={ref} className="relative h-[200vh] border-t border-gold/10">
-      <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
+    <section
+      ref={ref}
+      className="
+        relative
+        h-[120vh]
+
+        overflow-hidden
+
+        border-t
+        border-gold/10
+      "
+    >
+      <div
+        className="
+          sticky
+          top-0
+
+          flex
+          h-screen
+          w-full
+
+          items-center
+          justify-center
+
+          overflow-hidden
+        "
+      >
+
+        {/* -------------------------------------------------------------------------- */}
+        {/*                              SANCTUM IMAGE                                  */}
+        {/* -------------------------------------------------------------------------- */}
+
         <motion.img
           src={mandirSanctum}
-          alt="मंदिर के गर्भगृह की दिव्य झलक"
-          style={{ scale: imgScale, opacity: useTransform(smooth, [0, 0.3, 1], [0.95, 0.92, 1]) }}
-          className="absolute inset-0 h-full w-full object-cover"
+          alt="माँ बगलामुखी के दिव्य दर्शन"
+          style={{
+            scale: imgScale,
+            opacity: imgOpacity,
+          }}
+          className="
+            absolute
+            inset-0
+
+            h-full
+            w-full
+
+            object-cover
+          "
           loading="lazy"
           width={1080}
           height={1920}
         />
 
-        {/* dark base wash so the reveal feels cinematic */}
+        {/* -------------------------------------------------------------------------- */}
+        {/*                               BASE WASH                                     */}
+        {/* -------------------------------------------------------------------------- */}
+
         <motion.div
-          style={{ opacity: imgDim }}
-          className="absolute inset-0 bg-night-deep"
+          style={{
+            opacity: imgDim,
+          }}
+          className="
+            absolute
+            inset-0
+
+            bg-night-deep
+          "
         />
 
-        {/* left parda */}
+        {/* -------------------------------------------------------------------------- */}
+        {/*                           DIVINE CENTER LIGHT                               */}
+        {/* -------------------------------------------------------------------------- */}
+
+        <div
+          className="
+            pointer-events-none
+
+            absolute
+            left-1/2
+            top-0
+
+            z-20
+
+            h-full
+            w-px
+
+            -translate-x-1/2
+
+            bg-gradient-to-b
+            from-transparent
+            via-gold/40
+            to-transparent
+          "
+        />
+
+        <div
+          className="
+            pointer-events-none
+
+            absolute
+            left-1/2
+            top-1/2
+
+            z-20
+
+            h-[30rem]
+            w-[30rem]
+
+            -translate-x-1/2
+            -translate-y-1/2
+
+            rounded-full
+
+            bg-gold/10
+
+            blur-3xl
+          "
+        />
+
+        {/* -------------------------------------------------------------------------- */}
+        {/*                               LEFT CURTAIN                                  */}
+        {/* -------------------------------------------------------------------------- */}
+
         <motion.div
-          style={{ x: leftX, opacity: curtainOpacity }}
-          className="absolute inset-y-0 left-0 w-1/2 overflow-hidden shadow-[inset_-22px_0_70px_rgba(0,0,0,0.75)]"
+          style={{
+            x: leftX,
+            opacity: curtainOpacity,
+          }}
+          className="
+            absolute
+            inset-y-0
+            left-0
+
+            w-1/2
+
+            overflow-hidden
+
+            shadow-[inset_-22px_0_70px_rgba(0,0,0,0.75)]
+          "
         >
           <div className="relative h-full w-full">
+
             <img
               src={pardaCurtain}
               alt=""
               aria-hidden="true"
-              className="h-full w-full object-cover object-right"
+              className="
+                h-full
+                w-full
+
+                object-cover
+                object-right
+              "
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#5a0000]/95 via-[#8b0f0f]/90 to-[#220000]/95" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.14),transparent_35%),linear-gradient(180deg,rgba(255,255,255,0.08),transparent_30%,rgba(0,0,0,0.22))]" />
+
+            {/* curtain shading */}
+
+            <div
+              className="
+                absolute
+                inset-0
+
+                bg-gradient-to-r
+                from-[#5a0000]/95
+                via-[#8b0f0f]/90
+                to-[#220000]/95
+              "
+            />
+
+            {/* fabric shine */}
+
+            <div
+              className="
+                absolute
+                inset-0
+
+                bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.14),transparent_35%),linear-gradient(180deg,rgba(255,255,255,0.08),transparent_30%,rgba(0,0,0,0.22))]
+              "
+            />
           </div>
         </motion.div>
 
-        {/* right parda */}
+        {/* -------------------------------------------------------------------------- */}
+        {/*                              RIGHT CURTAIN                                  */}
+        {/* -------------------------------------------------------------------------- */}
+
         <motion.div
-          style={{ x: rightX, opacity: curtainOpacity }}
-          className="absolute inset-y-0 right-0 w-1/2 overflow-hidden shadow-[inset_22px_0_70px_rgba(0,0,0,0.75)]"
+          style={{
+            x: rightX,
+            opacity: curtainOpacity,
+          }}
+          className="
+            absolute
+            inset-y-0
+            right-0
+
+            w-1/2
+
+            overflow-hidden
+
+            shadow-[inset_22px_0_70px_rgba(0,0,0,0.75)]
+          "
         >
           <div className="relative h-full w-full">
+
             <img
               src={pardaCurtain}
               alt=""
               aria-hidden="true"
-              className="h-full w-full object-cover object-left scale-x-[-1]"
+              className="
+                h-full
+                w-full
+
+                object-cover
+                object-left
+
+                scale-x-[-1]
+              "
             />
-            <div className="absolute inset-0 bg-gradient-to-l from-[#5a0000]/95 via-[#8b0f0f]/90 to-[#220000]/95" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(255,255,255,0.14),transparent_35%),linear-gradient(180deg,rgba(255,255,255,0.08),transparent_30%,rgba(0,0,0,0.22))]" />
+
+            {/* curtain shading */}
+
+            <div
+              className="
+                absolute
+                inset-0
+
+                bg-gradient-to-l
+                from-[#5a0000]/95
+                via-[#8b0f0f]/90
+                to-[#220000]/95
+              "
+            />
+
+            {/* fabric shine */}
+
+            <div
+              className="
+                absolute
+                inset-0
+
+                bg-[radial-gradient(circle_at_70%_20%,rgba(255,255,255,0.14),transparent_35%),linear-gradient(180deg,rgba(255,255,255,0.08),transparent_30%,rgba(0,0,0,0.22))]
+              "
+            />
           </div>
         </motion.div>
 
-        {/* center divider with diya */}
-        <div className="absolute left-1/2 top-0 z-20 -translate-x-1/2">
-          <div className="flex h-screen w-px items-center justify-center bg-gradient-to-b from-transparent via-gold/70 to-transparent">
-            <Diya />
-          </div>
-        </div>
+        {/* -------------------------------------------------------------------------- */}
+        {/*                             DIVINE REVEAL TEXT                              */}
+        {/* -------------------------------------------------------------------------- */}
 
-        {/* caption appears after reveal */}
         <motion.div
-          style={{ opacity: captionOpacity, y: captionY }}
-          className="relative z-30 max-w-2xl px-8 text-center"
+          style={{
+            opacity: captionOpacity,
+            y: captionY,
+          }}
+          className="
+            relative
+            z-30
+
+            max-w-3xl
+
+            px-8
+
+            text-center
+          "
         >
-          <ChapterLabel n="अध्याय दो" label="The Divine Reveal" />
-          <h2 className="mt-5 font-deva text-5xl leading-tight text-gradient-gold sm:text-7xl">
-          ॥ ॐ ह्लीं बगलामुख्यै नमः॥
+          <ChapterLabel
+            n="अध्याय दो"
+            label="The Divine Reveal"
+          />
+
+          {/* MAIN MANTRA */}
+
+          <h2
+            className="
+              mt-6
+
+              font-deva
+
+              text-5xl
+              sm:text-6xl
+              md:text-7xl
+
+              leading-[1.55]
+
+              overflow-visible
+
+              text-gradient-gold
+            "
+          >
+            ॥ ॐ ह्लीं बगलामुख्यै नमः ॥
           </h2>
-          <p className="mt-6 font-display text-lg italic text-gold-soft">
-          स्वर्णिम आभा में माँ बगलामुखी के दिव्य दर्शन।।
+
+          {/* SUBTEXT */}
+
+          <p
+            className="
+              mt-7
+
+              font-display
+
+              text-lg
+              sm:text-xl
+
+              italic
+
+              leading-[2]
+
+              text-gold-soft
+            "
+          >
+            स्वर्णिम आभा में
+            <span className="text-gold">
+              {" "}
+              माँ बगलामुखी{" "}
+            </span>
+            के दिव्य दर्शन।
           </p>
+
+          {/* SMALL GLOW LINE */}
+
+          <div
+            className="
+              mx-auto
+              mt-8
+
+              h-px
+              w-32
+
+              bg-gradient-to-r
+              from-transparent
+              via-gold
+              to-transparent
+            "
+          />
         </motion.div>
+
+        {/* -------------------------------------------------------------------------- */}
+        {/*                                 EMBERS                                      */}
+        {/* -------------------------------------------------------------------------- */}
 
         <Embers count={18} />
       </div>
     </section>
   );
-}
-/* --------------------------- CHAPTER 3: the unique mahapuja --------------------------- */
+}/* --------------------------- CHAPTER 3: the unique mahapuja --------------------------- */
 function ChapterThree() {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -406,7 +1120,7 @@ function ChapterThree() {
         <motion.div style={{ y: titleY }}>
           <ChapterLabel n="अध्याय तीन" label="The Rare Sadhana" />
 
-          <h2 className="mt-6 font-deva text-4xl leading-tight text-gradient-gold sm:text-6xl md:text-7xl">
+          <h2 className="mt-6 font-deva  text-4xl sm:text-6xl md:text-7xl  leading-[1.45] md:leading-[1.40] text-gradient-gold sm:text-6xl md:text-7xl">
             लक्ष्मी विषकन्या दोष
             <br />
             निवारण महापूजा
@@ -689,13 +1403,6 @@ function ChapterFive() {
 }
 
 /* --------------------------- CLOSING --------------------------- */
-function Closing() {
-  return (
-    <section className="relative overflow-hidden border-t border-gold/10 px-6 py-32 text-center">
-      <Embers count={18} />
-      
-    </section>
-  );
-}
+
 
 export { KnowMandirPage };
