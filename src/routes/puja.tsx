@@ -6,13 +6,13 @@ import {
   useSpring,
 } from "framer-motion";
 import { useRef } from "react";
-import yantra from "@/assets/yantra.png";
-import photo_gallery_1 from "@/assets/photo_gallery_1.png";
-import photo_gallery_2 from "@/assets/photo_gallery_2.jpeg";
-import photo_gallery_3 from "@/assets/photo_gallery_3.png";
-import photo_gallery_4 from "@/assets/photo_gallery_4.png";
-import photo_gallery_5 from "@/assets/photo_gallery_5.jpg";
-import photo_gallery_6 from "@/assets/photo_gallery_6.png";
+import yantra from "@/assets/yantra.webp";
+import photo_gallery_1 from "@/assets/photo_gallery_1.webp";
+import photo_gallery_2 from "@/assets/photo_gallery_2.webp";
+import photo_gallery_3 from "@/assets/photo_gallery_3.webp";
+import photo_gallery_4 from "@/assets/photo_gallery_4.webp";
+import photo_gallery_5 from "@/assets/photo_gallery_5.webp";
+import photo_gallery_6 from "@/assets/photo_gallery_6.webp";
 
 import {
   Flame,
@@ -38,10 +38,10 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-import sanctum from "@/assets/mandir-sanctum.jpg";
-import havan from "@/assets/havan.jpg";
-import aarti from "@/assets/aarti-diyas.jpg";
-import yantra_circle from "@/assets/yantra.png";
+import sanctum from "@/assets/mandir-sanctum.webp";
+import havan from "@/assets/havan.webp";
+import aarti from "@/assets/aarti-diyas.webp";
+import yantra_circle from "@/assets/yantra.webp";
 
 export const Route = createFileRoute("/puja")({
   component: PujasPage,

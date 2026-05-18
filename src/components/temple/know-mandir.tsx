@@ -8,13 +8,13 @@ import {
 } from "framer-motion";
 import { useRef } from "react";
 import { ChevronDown, MapPin, Flame, Sparkles, Home, Users } from "lucide-react";
-import mandirExteriorIntro from "@/assets/mandir-exterior-1.png";
-import mandirExterior from "@/assets/mandir-exterior.png";
-import mandirSanctum from "@/assets/mandir-sanctum.jpg";
-import havan from "@/assets/havan.png";
-import aartiDiyas from "@/assets/aarti-diyas.jpg";
-import yantra from "@/assets/yantra.png";
-import pardaCurtain from "@/assets/parda-red.png";
+import mandirExteriorIntro from "@/assets/mandir-exterior-1.webp";
+import mandirExterior from "@/assets/mandir-exterior.webp";
+import mandirSanctum from "@/assets/mandir-sanctum.webp";
+import havan from "@/assets/havan.webp";
+import aartiDiyas from "@/assets/aarti-diyas.webp";
+import yantra from "@/assets/yantra.webp";
+import pardaCurtain from "@/assets/parda-red.webp";
 
 
 /* --------------------------- Embers (CSS) --------------------------- */

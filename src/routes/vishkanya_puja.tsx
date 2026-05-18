@@ -21,12 +21,12 @@ import {
   ScrollText,
   Brain,
 }from "lucide-react";
-import dosha from "@/assets/vishkanya-dosha.jpg";
-import dosha2 from "@/assets/vishkanya-dosha-2.jpeg";
-import swamiPuja from "@/assets/swami-puja.jpeg";
-import havan from "@/assets/havan.jpg";
-import sanctum from "@/assets/mandir-sanctum.jpg";
-import yantra from "@/assets/yantra.png";
+import dosha from "@/assets/vishkanya-dosha.webp";
+import dosha2 from "@/assets/vishkanya-dosha-2.webp";
+import swamiPuja from "@/assets/swami-puja.webp";
+import havan from "@/assets/havan.webp";
+import sanctum from "@/assets/mandir-sanctum.webp";
+import yantra from "@/assets/yantra.webp";
 
 export const Route = createFileRoute("/vishkanya_puja")({
   component: VishkanyaPujaPage,

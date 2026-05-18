@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
-import maaTrishulLogo from "@/assets/maa_trishul_logo.png";
+import maaTrishulLogo from "@/assets/maa_trishul_logo.webp";
 import { Link } from "@tanstack/react-router";
 
 const links = [

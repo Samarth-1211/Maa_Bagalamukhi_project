@@ -11,7 +11,7 @@ import {
 import appCss from "../styles.css?url";
 import { Navbar } from "@/components/temple/Navbar";
 import { Footer } from "@/components/temple/Footer";
-import maaTrishulLogo from "@/assets/maa_trishul_logo.png";
+import maaTrishulLogo from "@/assets/maa_trishul_logo.webp";
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">

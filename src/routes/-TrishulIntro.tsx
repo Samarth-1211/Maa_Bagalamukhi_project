@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import trishul from "@/assets/trishul.png";
+import trishul from "@/assets/trishul.webp";
 
 export function TempleIntro() {
   const [hide, setHide] = useState(false);

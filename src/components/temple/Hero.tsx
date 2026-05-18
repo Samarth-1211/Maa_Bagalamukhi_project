@@ -13,9 +13,9 @@ import {
 } from "lucide-react";
 
 import mandirVideo from "@/assets/mandir-video.mp4";
-import diya from "@/assets/diya.png";
-import yantra from "@/assets/yantra.png";
-import petals from "@/assets/petals.png";
+import diya from "@/assets/diya.webp";
+import yantra from "@/assets/yantra.webp";
+import petals from "@/assets/petals.webp";
 
 import "../../home_style.css";
 import { TempleIntro } from "../../routes/-TrishulIntro";
