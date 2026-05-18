@@ -22,7 +22,7 @@ import {
   Brain,
 }from "lucide-react";
 import dosha from "@/assets/vishkanya-dosha.webp";
-import dosha2 from "@/assets/vishkanya-dosha-2.webp";
+import dosha2 from "@/assets/vishkanya-dosha.webp";
 import swamiPuja from "@/assets/swami-puja.webp";
 import havan from "@/assets/havan.webp";
 import sanctum from "@/assets/mandir-sanctum.webp";
