@@ -1261,17 +1261,11 @@ function PujasPage() {
               to="/vishkanya_puja"
               className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-yellow-300 to-yellow-500 px-10 py-5 font-semibold text-black shadow-[0_0_40px_rgba(255,200,0,0.35)] transition-all duration-300 hover:scale-105"
             >
-              पूजा प्रारंभ करें
-
+            लक्ष्मी विषकन्या दोष निवारण महापूजा
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Link>
 
-            <Link
-              to="/know-mandir"
-              className="rounded-full border border-white/15 bg-white/5 px-10 py-5 font-semibold text-white backdrop-blur-md transition hover:border-yellow-300/40 hover:bg-yellow-300/10"
-            >
-              मंदिर के बारे में
-            </Link>
+            
           </motion.div>
         </div>
       </section>

@@ -234,7 +234,7 @@ export function Navbar() {
                 overflow-visible
               "
             >
-              श्री बगलामुखी मंदिर
+            ॐ ह्रीं बगलामुखी देव्यै ह्लीं ॐ नमः
             </div>
           </div>
         </a>

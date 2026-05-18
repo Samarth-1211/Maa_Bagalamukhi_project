@@ -8,7 +8,6 @@ import { KnowMandirPage } from "@/components/temple/know-mandir";
 import { Shankaracharya } from "@/components/temple/Shankaracharya";
 import { KnowDevi } from "@/components/temple/KnowDevi";
 import { Donation } from "@/components/temple/Donation";
-import { Footer } from "@/components/temple/Footer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -43,7 +42,6 @@ function Index() {
         <KnowDevi />
         <Donation />
       </main>
-      <Footer />
     </div>
   );
 }

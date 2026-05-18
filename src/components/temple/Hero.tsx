@@ -8,17 +8,103 @@ import diya from "@/assets/diya.webp";
 import "../../home_style.css";
 import { TempleIntro } from "../../routes/-TrishulIntro";
 
-/* -------------------------------------------------------------------------- */
-/*  FCP FIX #1: CSS-only embers — zero JS/RAF overhead on initial paint       */
-/* -------------------------------------------------------------------------- */
+/* ============================================================
+   CSS INJECTOR — golden glitter & sparkle keyframes
+   Injected once into <head> so no runtime overhead per render
+   ============================================================ */
+const GLITTER_CSS = `
+  /* ── Ember drift (existing, unchanged) ─────────────────── */
+  @keyframes emberRise {
+    0%   { transform: translateY(0)      translateX(0)           scale(1);   opacity: 0; }
+    10%  { opacity: 1; }
+    80%  { opacity: 0.6; }
+    100% { transform: translateY(-100vh) translateX(var(--drift)) scale(0.3); opacity: 0; }
+  }
+  .ember-particle { animation: emberRise linear infinite; }
 
-/**
- * WHY: Framer Motion particle components cost ~2ms each to mount.
- * With 8 particles that's 16ms wasted before first paint.
- * CSS @keyframes are offloaded to the compositor thread entirely.
- * 
- * SAVINGS: ~16ms mount cost + eliminates JS animation overhead
- */
+  /* ── Glitter pixel: twinkle + float ────────────────────── */
+  @keyframes glitterFloat {
+    0%   { transform: translateY(0)   translateX(0)              scale(0.4) rotate(0deg);   opacity: 0; }
+    15%  { opacity: 1; }
+    50%  { transform: translateY(var(--gy)) translateX(var(--gx)) scale(1)   rotate(180deg); opacity: 0.9; }
+    85%  { opacity: 0.5; }
+    100% { transform: translateY(var(--gy2)) translateX(var(--gx2)) scale(0.2) rotate(360deg); opacity: 0; }
+  }
+  .glitter-pixel { animation: glitterFloat ease-in-out infinite; }
+
+  /* ── Sparkle star: 4-point cross ───────────────────────── */
+  @keyframes sparklePulse {
+    0%   { transform: scale(0) rotate(0deg);   opacity: 0; }
+    20%  { transform: scale(1) rotate(45deg);  opacity: 1; }
+    50%  { transform: scale(1.4) rotate(90deg); opacity: 0.8; }
+    80%  { transform: scale(0.8) rotate(135deg); opacity: 0.5; }
+    100% { transform: scale(0) rotate(180deg); opacity: 0; }
+  }
+  .sparkle-star { animation: sparklePulse ease-in-out infinite; }
+
+  /* ── Golden shimmer sweep across title ─────────────────── */
+  @keyframes goldSweep {
+    0%   { background-position: -200% center; }
+    100% { background-position:  300% center; }
+  }
+  .gold-shimmer {
+    background: linear-gradient(
+      105deg,
+      oklch(0.82 0.14 82)  0%,
+      oklch(0.92 0.18 90) 20%,
+      oklch(0.98 0.10 95) 35%,
+      oklch(1.00 0.00 90) 50%,
+      oklch(0.98 0.10 95) 65%,
+      oklch(0.92 0.18 90) 80%,
+      oklch(0.82 0.14 82) 100%
+    );
+    background-size: 250% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: goldSweep 4s linear infinite;
+  }
+
+  /* ── Glow breathe ──────────────────────────────────────── */
+  @keyframes breathe {
+    0%, 100% { transform: scale(1);   opacity: 0.7; }
+    50%       { transform: scale(1.6); opacity: 1;   }
+  }
+  .breathe { animation: breathe 2.4s ease-in-out infinite; }
+
+  /* ── Text glow ─────────────────────────────────────────── */
+  .text-glow { text-shadow: 0 0 40px oklch(0.82 0.18 82 / 0.55), 0 0 80px oklch(0.75 0.21 50 / 0.3); }
+  .text-ivory { color: oklch(0.97 0.02 85); }
+
+  /* ── Halo ring behind title ─────────────────────────────── */
+  @keyframes haloSpin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  /* ── Golden dust cascade ────────────────────────────────── */
+  @keyframes dustFall {
+    0%   { transform: translateY(-20px) translateX(0)      scale(1);   opacity: 0; }
+    10%  { opacity: 0.8; }
+    90%  { opacity: 0.4; }
+    100% { transform: translateY(110vh) translateX(var(--dx)) scale(0.5); opacity: 0; }
+  }
+  .dust-particle { animation: dustFall linear infinite; }
+`;
+
+function injectGlitterCSS() {
+  if (typeof document === "undefined") return;
+  if (document.getElementById("hero-glitter-css")) return;
+  const style = document.createElement("style");
+  style.id = "hero-glitter-css";
+  style.textContent = GLITTER_CSS;
+  document.head.appendChild(style);
+}
+injectGlitterCSS();
+
+/* ============================================================
+   EMBERS  (original, untouched)
+   ============================================================ */
 function Embers() {
   const particles = Array.from({ length: 8 });
   return (
@@ -29,7 +115,6 @@ function Embers() {
         const delay = (i * 0.7) % 12;
         const duration = 9 + (i % 7);
         const drift = `${(i % 2 === 0 ? 1 : -1) * (10 + (i % 30))}px`;
-
         return (
           <span
             key={i}
@@ -52,20 +137,199 @@ function Embers() {
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/*  FCP FIX #2: Deferred animation wrapper                                    */
-/* -------------------------------------------------------------------------- */
+/* ============================================================
+   GOLDEN GLITTER PIXELS
+   Small square/diamond pixels that float and twinkle
+   Pure CSS — zero JS per frame
+   ============================================================ */
+function GoldenGlitter() {
+  // 28 glitter pixels spread across the hero
+  const pixels = Array.from({ length: 28 });
 
-/**
- * WHY: All 6 motion.div elements currently run their `animate` prop from
- * the very first render, keeping the paint thread busy for 1.55s+.
- * 
- * Solution: render children with `visibility: hidden` immediately (so layout
- * is calculated and LCP image can load), but defer Framer Motion animations
- * until after a 100ms idle callback — well past FCP.
- * 
- * SAVINGS: ~600ms of animation blocking removed from critical path
- */
+  const goldPalette = [
+    "oklch(0.98 0.12 92)",  // pale champagne
+    "oklch(0.95 0.18 88)",  // warm gold
+    "oklch(0.90 0.22 80)",  // deep gold
+    "oklch(1.00 0.06 95)",  // near-white glint
+    "oklch(0.85 0.20 70)",  // amber gold
+    "oklch(0.92 0.15 100)", // yellow-gold
+  ];
+
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+      {pixels.map((_, i) => {
+        const left   = (i * 13 + 7)  % 100;
+        const top    = (i * 17 + 11) % 85;
+        const size   = 2 + (i % 5);
+        const delay  = (i * 0.43) % 8;
+        const dur    = 4 + (i % 5);
+        const color  = goldPalette[i % goldPalette.length];
+
+        // Random float vectors
+        const gx  = `${(i % 2 === 0 ? 1 : -1) * (15 + (i % 40))}px`;
+        const gy  = `${-30 - (i % 60)}px`;
+        const gx2 = `${(i % 2 === 0 ? -1 : 1) * (5  + (i % 25))}px`;
+        const gy2 = `${-80 - (i % 80)}px`;
+
+        // Alternate between diamond and round shapes
+        const isDiamond = i % 3 !== 0;
+
+        return (
+          <span
+            key={i}
+            className="glitter-pixel absolute"
+            style={{
+              left: `${left}%`,
+              top:  `${top}%`,
+              width:  size,
+              height: size,
+              background: color,
+              boxShadow: `0 0 ${size * 3}px ${color}, 0 0 ${size * 6}px ${color}80`,
+              borderRadius: isDiamond ? "1px" : "50%",
+              transform: isDiamond ? "rotate(45deg)" : "none",
+              animationDelay:    `${delay}s`,
+              animationDuration: `${dur}s`,
+              ["--gx"  as string]: gx,
+              ["--gy"  as string]: gy,
+              ["--gx2" as string]: gx2,
+              ["--gy2" as string]: gy2,
+              willChange: "transform, opacity",
+            }}
+          />
+        );
+      })}
+    </div>
+  );
+}
+
+/* ============================================================
+   SPARKLE STARS
+   4-point CSS star bursts (clip-path polygon)
+   ============================================================ */
+function SparkleStars() {
+  const stars = Array.from({ length: 18 });
+
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+      {stars.map((_, i) => {
+        const left  = (i * 19 + 5)  % 96;
+        const top   = (i * 23 + 8)  % 88;
+        const size  = 6 + (i % 10);
+        const delay = (i * 0.61) % 7;
+        const dur   = 2.5 + (i % 3);
+
+        const brightness = i % 4 === 0
+          ? "oklch(1.00 0.00 90)"       // pure white flash
+          : i % 4 === 1
+          ? "oklch(0.97 0.12 92)"       // champagne
+          : i % 4 === 2
+          ? "oklch(0.90 0.22 80)"       // warm gold
+          : "oklch(0.95 0.18 88)";      // mid gold
+
+        return (
+          <span
+            key={i}
+            className="sparkle-star absolute"
+            style={{
+              left: `${left}%`,
+              top:  `${top}%`,
+              width:  size,
+              height: size,
+              // 4-point star via clip-path
+              clipPath: "polygon(50% 0%, 55% 45%, 100% 50%, 55% 55%, 50% 100%, 45% 55%, 0% 50%, 45% 45%)",
+              background: `radial-gradient(circle, white 0%, ${brightness} 40%, transparent 80%)`,
+              filter: `drop-shadow(0 0 ${size / 2}px ${brightness}) drop-shadow(0 0 ${size}px oklch(0.82 0.16 82 / 0.7))`,
+              animationDelay:    `${delay}s`,
+              animationDuration: `${dur}s`,
+              willChange: "transform, opacity",
+            }}
+          />
+        );
+      })}
+    </div>
+  );
+}
+
+/* ============================================================
+   GOLDEN DUST CASCADE
+   Fine falling gold dust from top — adds "divine shower" feel
+   ============================================================ */
+function GoldenDust() {
+  const motes = Array.from({ length: 20 });
+
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+      {motes.map((_, i) => {
+        const left = (i * 31 + 3) % 100;
+        const size = 1 + (i % 3);
+        const delay = (i * 0.55) % 14;
+        const dur   = 10 + (i % 8);
+        const dx    = `${(i % 2 === 0 ? 1 : -1) * (20 + (i % 50))}px`;
+
+        return (
+          <span
+            key={i}
+            className="dust-particle absolute top-0 rounded-full"
+            style={{
+              left: `${left}%`,
+              width:  size,
+              height: size,
+              background: "oklch(0.95 0.18 88 / 0.85)",
+              boxShadow: "0 0 4px oklch(0.92 0.18 88)",
+              animationDelay:    `${delay}s`,
+              animationDuration: `${dur}s`,
+              ["--dx" as string]: dx,
+              willChange: "transform, opacity",
+            }}
+          />
+        );
+      })}
+    </div>
+  );
+}
+
+/* ============================================================
+   GOLDEN HALO — radial glow ring behind the title area
+   ============================================================ */
+function GoldenHalo() {
+  return (
+    <div
+      className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
+      aria-hidden="true"
+      style={{ width: "min(85vw, 700px)", height: "min(85vw, 700px)" }}
+    >
+      {/* Outer soft glow */}
+      <div
+        className="absolute inset-0 rounded-full"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, oklch(0.82 0.18 82 / 0.12) 0%, oklch(0.75 0.21 50 / 0.07) 40%, transparent 70%)",
+        }}
+      />
+      {/* Inner concentrated halo */}
+      <div
+        className="absolute inset-[15%] rounded-full"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, oklch(0.95 0.14 90 / 0.08) 0%, oklch(0.82 0.18 82 / 0.05) 50%, transparent 75%)",
+        }}
+      />
+      {/* Spinning conic ring */}
+      <div
+        className="absolute inset-[20%] rounded-full opacity-20"
+        style={{
+          background:
+            "conic-gradient(from 0deg, transparent 0deg, oklch(0.92 0.18 88 / 0.6) 30deg, transparent 60deg, oklch(0.92 0.18 88 / 0.4) 120deg, transparent 150deg, oklch(0.98 0.10 95 / 0.7) 210deg, transparent 240deg, oklch(0.92 0.18 88 / 0.5) 300deg, transparent 330deg, transparent 360deg)",
+          animation: "haloSpin 18s linear infinite",
+        }}
+      />
+    </div>
+  );
+}
+
+/* ============================================================
+   DEFERRED REVEAL  (original, untouched)
+   ============================================================ */
 function DeferredReveal({
   children,
   delay = 0,
@@ -82,17 +346,12 @@ function DeferredReveal({
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    // Use requestIdleCallback to wait until browser is idle after FCP
-    // Falls back to setTimeout(100) for Safari
     const schedule =
       typeof window !== "undefined" && "requestIdleCallback" in window
         ? (cb: () => void) => requestIdleCallback(cb, { timeout: 300 })
         : (cb: () => void) => setTimeout(cb, 100);
-
     const id = schedule(() => setReady(true));
-    return () => {
-      if (typeof id === "number") clearTimeout(id);
-    };
+    return () => { if (typeof id === "number") clearTimeout(id); };
   }, []);
 
   return (
@@ -108,28 +367,13 @@ function DeferredReveal({
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/*  FCP FIX #3: Lazy scroll setup                                             */
-/* -------------------------------------------------------------------------- */
-
-/**
- * WHY: useScroll + useSpring both start a RAF loop the moment they mount,
- * even if the page hasn't been scrolled. This adds ~1-2s of main thread
- * work during initial load.
- *
- * Solution: don't mount the scroll machinery at all until first scroll event.
- */
+/* ============================================================
+   LAZY SCROLL  (original, untouched)
+   ============================================================ */
 function useScrollWhenNeeded(ref: React.RefObject<HTMLDivElement>) {
   const [enabled, setEnabled] = useState(false);
-
-  // Dummy static values used before scroll is enabled
   const staticProgress = { get: () => 0 } as unknown as ReturnType<typeof useScroll>["scrollYProgress"];
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const spring = useSpring(scrollYProgress, { damping: 30, stiffness: 100 });
 
   useEffect(() => {
@@ -141,24 +385,48 @@ function useScrollWhenNeeded(ref: React.RefObject<HTMLDivElement>) {
   return enabled ? spring : staticProgress;
 }
 
-/* -------------------------------------------------------------------------- */
-/*  HERO                                                                      */
-/* -------------------------------------------------------------------------- */
+/* ============================================================
+   TEMPLE INTRO FAST DISMISS  (original, untouched)
+   ============================================================ */
+function TempleIntroFastDismiss() {
+  const [visible, setVisible]   = useState(true);
+  const [mounted, setMounted]   = useState(true);
 
+  useEffect(() => {
+    const fadeTimer   = setTimeout(() => setVisible(false), 100);
+    const unmountTimer = setTimeout(() => setMounted(false), 250);
+    return () => { clearTimeout(fadeTimer); clearTimeout(unmountTimer); };
+  }, []);
+
+  if (!mounted) return null;
+
+  return (
+    <div
+      style={{
+        transition: "opacity 150ms ease-out",
+        opacity: visible ? 1 : 0,
+        pointerEvents: visible ? "auto" : "none",
+      }}
+    >
+      <TempleIntro />
+    </div>
+  );
+}
+
+/* ============================================================
+   HERO  (main export)
+   ============================================================ */
 export function Hero() {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref      = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // FCP FIX: scroll machinery only activates post-scroll
   useScrollWhenNeeded(ref);
 
-  // Lazy video — starts only after first scroll
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
-    v.muted = true;
+    v.muted       = true;
     v.playsInline = true;
-
     const handler = () => v.play().catch(() => {});
     window.addEventListener("scroll", handler, { once: true, passive: true });
     return () => window.removeEventListener("scroll", handler);
@@ -172,36 +440,22 @@ export function Hero() {
     >
       <div className="sticky top-0 h-screen overflow-hidden">
 
-        {/* --------------------------------------------------------------------------
-            FCP FIX #4: TempleIntro — force maximum 100ms display
-            
-            WHY: The original overlay sits for 400ms, directly delaying FCP.
-            We pass an `onDone` prop so Hero can track when it's gone,
-            and we CSS-transition it out at 100ms instead of 400ms.
-            
-            If TempleIntro doesn't accept props, wrap it so the overlay
-            is removed from the DOM after 100ms via a portal/conditional.
-        -------------------------------------------------------------------------- */}
+        {/* Temple intro overlay */}
         <TempleIntroFastDismiss />
 
-        {/* POSTER — eager, no transforms, directly paints LCP candidate */}
-        {/* 
-          FCP FIX #5: Remove motion.div wrapper from image entirely.
-          A plain <img> with loading="eager" is parsed by the preload scanner.
-          Wrapping in motion.div delays paint because Framer needs to mount first.
-        */}
+        {/* ── POSTER ─────────────────────────────────────────────── */}
         <div className="absolute inset-0">
           <img
             src={mandirPoster}
             alt="मंदिर का पोस्टर"
             className="h-full w-full object-cover"
             loading="eager"
-            fetchPriority="high"  
-            decoding="sync"       
+            fetchPriority="high"
+            decoding="sync"
           />
         </div>
 
-        {/* OVERLAY — plain div, no motion wrapper */}
+        {/* ── BASE OVERLAY ───────────────────────────────────────── */}
         <div
           className="absolute inset-0"
           style={{
@@ -211,9 +465,18 @@ export function Hero() {
           }}
         />
 
-        <Embers />
+        {/* ── GOLDEN LUMINOSITY WASH ─────────────────────────────── */}
+        {/* Adds a warm divine light across the entire image */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 35%, oklch(0.82 0.18 82 / 0.14) 0%, oklch(0.75 0.21 50 / 0.06) 45%, transparent 70%)",
+            mixBlendMode: "screen",
+          }}
+        />
 
-        {/* VIGNETTE */}
+        {/* ── VIGNETTE ───────────────────────────────────────────── */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -221,10 +484,16 @@ export function Hero() {
           }}
         />
 
-        {/* --------------------------------------------------------------------------
-            MAIN CONTENT — all wrapped in DeferredReveal so animations
-            fire AFTER FCP, not before it.
-        -------------------------------------------------------------------------- */}
+        {/* ── GOLDEN HALO (behind title) ─────────────────────────── */}
+        <GoldenHalo />
+
+        {/* ── PARTICLE LAYERS (CSS-only, compositor thread) ─────── */}
+        <GoldenDust />
+        <Embers />
+        <GoldenGlitter />
+        <SparkleStars />
+
+        {/* ── MAIN CONTENT ───────────────────────────────────────── */}
         <div
           className="
             relative z-20 mx-auto
@@ -312,18 +581,29 @@ export function Hero() {
           </DeferredReveal>
         </div>
 
-        {/* DIYA */}
+        {/* ── DIYA ───────────────────────────────────────────────── */}
         <div className="pointer-events-none absolute bottom-0 left-1/2 z-20 -translate-x-1/2 translate-y-1/4">
+          {/* Golden glow under diya */}
+          <div
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
+            style={{
+              width: 140,
+              height: 140,
+              background: "radial-gradient(circle, oklch(0.92 0.22 80 / 0.45) 0%, oklch(0.82 0.18 70 / 0.2) 50%, transparent 75%)",
+              filter: "blur(12px)",
+              animation: "breathe 2.4s ease-in-out infinite",
+            }}
+          />
           <img
             src={diya}
             alt="दीपक"
-            className="w-[140px] sm:w-[160px] md:w-[180px]"
+            className="relative z-10 w-[140px] sm:w-[160px] md:w-[180px]"
             loading="lazy"
             decoding="async"
           />
         </div>
 
-        {/* SCROLL INDICATOR */}
+        {/* ── SCROLL INDICATOR ───────────────────────────────────── */}
         <DeferredReveal
           delay={0.5}
           y={0}
@@ -343,59 +623,12 @@ export function Hero() {
           </motion.div>
         </DeferredReveal>
 
-        {/* BOTTOM FADE */}
+        {/* ── BOTTOM FADE ────────────────────────────────────────── */}
         <div
           className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-40"
           style={{ background: "linear-gradient(180deg, transparent 0%, oklch(0.14 0.03 40) 100%)" }}
         />
       </div>
     </section>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/*  TempleIntro fast-dismiss wrapper                                          */
-/* -------------------------------------------------------------------------- */
-
-/**
- * FCP FIX: Caps TempleIntro at 100ms visibility.
- * 
- * HOW: Wraps the component in a div that fades out after 100ms.
- * After 250ms the component is unmounted entirely (removes it from DOM).
- * 
- * If your TempleIntro accepts a `maxDuration` or `onComplete` prop,
- * pass the 100ms constraint through that instead — it'll be cleaner.
- * 
- * SAVINGS: 300ms removed from FCP blocking time
- */
-function TempleIntroFastDismiss() {
-  const [visible, setVisible] = useState(true);
-  const [mounted, setMounted] = useState(true);
-
-  useEffect(() => {
-    // Start fade-out at 100ms (vs original 400ms)
-    const fadeTimer = setTimeout(() => setVisible(false), 100);
-    // Unmount from DOM at 250ms (after CSS transition completes)
-    const unmountTimer = setTimeout(() => setMounted(false), 250);
-
-    return () => {
-      clearTimeout(fadeTimer);
-      clearTimeout(unmountTimer);
-    };
-  }, []);
-
-  if (!mounted) return null;
-
-  return (
-    <div
-      style={{
-        transition: "opacity 150ms ease-out",
-        opacity: visible ? 1 : 0,
-        // Keep it in the stacking context but prevent interaction during fade
-        pointerEvents: visible ? "auto" : "none",
-      }}
-    >
-      <TempleIntro />
-    </div>
   );
 }
