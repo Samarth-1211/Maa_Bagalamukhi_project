@@ -1,6 +1,6 @@
 import { ArrowRight, MapPin, Phone } from "lucide-react";
 
-import mandirPoster from "@/assets/Bagalamukhi-poster.webp";
+import mandirPoster from "@/assets/bagalamukhi-poster.webp";
 import maaTrishulLogo from "@/assets/maa_trishul_logo.webp";
 
 const highlights = [
