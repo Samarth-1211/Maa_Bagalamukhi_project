@@ -43,7 +43,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-import sanctum from "@/assets/mandir-sanctum.webp";
+import sanctum from "@/assets/bagalamukhi-poster.webp";
 import havan from "@/assets/havan.webp";
 import aarti from "@/assets/aarti-diyas.webp";
 import yantra_circle from "@/assets/yantra.webp";
