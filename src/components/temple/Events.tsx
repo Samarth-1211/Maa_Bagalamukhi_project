@@ -1,197 +1,329 @@
 import { Link } from "@tanstack/react-router";
+import { ArrowRight, Brain, Briefcase, Flame, Scale, ShieldCheck, Sparkles, Users } from "lucide-react";
+
 import { Reveal, StaggerGroup, StaggerItem } from "./Reveal";
+import havan from "@/assets/havan.webp";
+import swamiPuja from "@/assets/swami-puja.webp";
 
-
-import {
-  Heart,
-  Briefcase,
-  Brain,
-  Scale,
-  ShieldOff,
-  Users,
-  Coins,
-  Sparkles,
-  Flame,
-  ArrowRight,
-} from "lucide-react";
-
-const problems = [
+const services = [
   {
-    icon: Users,
-    title: "पारिवारिक कलह",
-    solution: "बगलामुखी शांति यज्ञ",
-    desc: "घर में मधुर वातावरण, आपसी प्रेम एवं पारिवारिक एकता हेतु विशेष अनुष्ठान।",
-    glow: "from-orange-500/20 to-yellow-500/10",
+    icon: Flame,
+    title: "बगलामुखी हवन",
+    desc: "विजय, रक्षा और बाधा निवारण के लिए वैदिक विधि से हवन।",
+  },
+  {
+    icon: Scale,
+    title: "कानूनी समस्या",
+    desc: "वाद-विवाद और न्यायिक मामलों में साहस व अनुकूलता हेतु जप।",
   },
   {
     icon: Briefcase,
-    title: "व्यापार में बाधा",
-    solution: "लक्ष्मी–बगलामुखी पूजा",
-    desc: "व्यवसाय में स्थिरता, आर्थिक उन्नति एवं सफलता के लिए सिद्ध साधना।",
-    glow: "from-yellow-500/20 to-amber-500/10",
+    title: "व्यापार बाधा",
+    desc: "व्यवसाय की स्थिरता, आर्थिक उन्नति और रुके कार्यों के लिए पूजा।",
+  },
+  {
+    icon: Users,
+    title: "परिवार शांति",
+    desc: "गृह कलह, मतभेद और अशांति को शांत करने हेतु विशेष अनुष्ठान।",
   },
   {
     icon: Brain,
     title: "मानसिक तनाव",
-    solution: "ध्यान एवं मंत्र जाप",
-    desc: "मानसिक शांति, आत्मबल एवं सकारात्मक ऊर्जा हेतु आध्यात्मिक साधना।",
-    glow: "from-red-500/20 to-orange-500/10",
+    desc: "मन की स्थिरता, आत्मबल और सकारात्मक ऊर्जा के लिए मंत्र साधना।",
   },
   {
-    icon: Scale,
-    title: "कानूनी समस्याएँ",
-    solution: "विजय बगलामुखी जप",
-    desc: "वाद-विवाद, न्यायिक मामलों एवं विरोधियों पर विजय हेतु विशेष मंत्र जाप।",
-    glow: "from-yellow-600/20 to-red-500/10",
+    icon: ShieldCheck,
+    title: "रक्षा कवच",
+    desc: "नकारात्मक ऊर्जा, बुरी नजर और भय से आध्यात्मिक संरक्षण।",
   },
-  {
-    icon: ShieldOff,
-    title: "नकारात्मक ऊर्जा",
-    solution: "रक्षा कवच अनुष्ठान",
-    desc: "बुरी नज़र, अभिचार एवं नकारात्मक शक्तियों से दिव्य सुरक्षा।",
-    glow: "from-orange-600/20 to-yellow-400/10",
-  },
-
 ];
+
+const steps = ["जन्म विवरण साझा करें", "पंडित जी से मार्गदर्शन लें", "मंदिर या ऑनलाइन पूजा कराएं"];
 
 export function Events() {
   return (
-    <section
-      id="events"
-      className="relative overflow-hidden py-32 px-6 lg:px-10"
-    >
-      {/* ambient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gold/10 to-transparent" />
-
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute left-1/2 top-20 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-gold/10 blur-3xl" />
-      </div>
+    <section id="events" className="relative overflow-hidden border-y border-gold/10 bg-night px-6 py-28 lg:px-10">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(178,55,28,0.22),transparent_34%),radial-gradient(circle_at_80%_42%,rgba(255,202,88,0.12),transparent_36%)]" />
 
       <div className="relative mx-auto max-w-7xl">
-        {/* heading */}
-        <Reveal>
-          <div className="mx-auto mb-24 max-w-4xl text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-gold/20 bg-card/40 px-5 py-2 backdrop-blur-sm">
-              <Sparkles className="h-4 w-4 text-gold" />
-
-              <span className="font-display text-xs uppercase tracking-[0.4em] text-vermillion">
-                जीवन समाधान
-              </span>
-            </div>
-
-            <h2 className="mt-8 font-hindi text-5xl leading-tight text-ivory md:text-7xl">
-              हर समस्या का
-              <br />
-              <span className="text-gradient-gold">
-                आध्यात्मिक समाधान
-              </span>
-            </h2>
-
-            <div className="mx-auto mt-8 w-48 gold-divider" />
-
-            <p className="mx-auto mt-8 max-w-3xl font-hindi text-lg leading-relaxed text-ivory/70">
-              माँ बगलामुखी की दिव्य कृपा एवं शास्त्रोक्त साधनाओं द्वारा
-              जीवन की अनेक बाधाओं, ग्रह दोषों एवं मानसिक अशांति का समाधान।
-            </p>
-          </div>
-        </Reveal>
-
-        {/* cards */}
-        <StaggerGroup
-          className="grid gap-7 sm:grid-cols-2 xl:grid-cols-4"
-          stagger={0.08}
-        >
-          {problems.map((p, i) => {
-            const Icon = p.icon;
-
-            return (
-              <StaggerItem key={i}>
-                <div className="group relative h-full overflow-hidden rounded-3xl border border-gold/15 bg-card/50 p-7 backdrop-blur-md transition-all duration-700 hover:-translate-y-2 hover:border-gold/40 hover:shadow-sacred">
-                  {/* glow */}
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${p.glow} opacity-0 transition-opacity duration-700 group-hover:opacity-100`}
-                  />
-
-                  {/* top border */}
-                  <div className="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-gradient-gold transition-transform duration-700 group-hover:scale-x-100" />
-
-                  <div className="relative z-10">
-                    {/* icon */}
-                    <div className="mb-6 flex items-start justify-between">
-                      <div className="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-gold shadow-gold transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
-                        <Icon
-                          className="h-7 w-7 text-ivory"
-                          strokeWidth={1.7}
-                        />
-                      </div>
-
-                      <span className="font-display text-xs uppercase tracking-[0.3em] text-gold/60">
-                        समाधान
-                      </span>
-                    </div>
-
-                    {/* title */}
-                    <h3 className="font-hindi text-2xl leading-tight text-ivory">
-                      {p.title}
-                    </h3>
-
-                    {/* solution */}
-                    <div className="mt-4 inline-flex rounded-full border border-vermillion/30 bg-vermillion/10 px-4 py-1 text-sm font-hindi text-vermillion">
-                      {p.solution}
-                    </div>
-
-                    {/* desc */}
-                    <p className="mt-5 font-hindi text-sm leading-relaxed text-ivory/70">
-                      {p.desc}
-                    </p>
-
-                    {/* button */}
-                    <Link
-                      to="puja"
-                      className="mt-8 inline-flex items-center gap-2 font-hindi text-sm text-gold transition-all duration-300 hover:gap-3 hover:text-vermillion"
-                    >
-                      पूजा के बारे में जानें
-
-                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                    </Link>
-                  </div>
-                </div>
-              </StaggerItem>
-            );
-          })}
-        </StaggerGroup>
-
-        {/* bottom banner */}
-        <Reveal delay={0.4}>
-          <div className="relative mt-24 overflow-hidden rounded-[2rem] border border-gold/20 bg-gradient-to-r from-gold/10 via-card/50 to-vermillion/10 p-10 text-center backdrop-blur-md">
-            <div className="absolute inset-0 opacity-20">
-              <div className="absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold blur-3xl" />
-            </div>
-
-            <div className="relative z-10">
-              <div className="font-display text-xs uppercase tracking-[0.4em] text-gold">
-                माँ की कृपा
+        <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
+          <Reveal>
+            <div>
+              <div className="inline-flex items-center gap-2 border border-gold/25 bg-card/35 px-4 py-2">
+                <Sparkles className="h-4 w-4 text-gold" />
+                <span className="font-display text-xs uppercase tracking-[0.36em] text-gold">
+                  Puja & Havan
+                </span>
               </div>
 
-              <h3 className="mt-5 font-hindi text-4xl leading-tight text-ivory md:text-5xl">
-                श्रद्धा से जुड़ें,
-                <br />
-                साधना से समाधान पाएँ
-              </h3>
+              <h2 className="mt-7 font-hindi text-4xl leading-[1.28] text-ivory sm:text-5xl md:text-6xl">
+                जीवन की बाधाओं के लिए
+                <span className="block text-gradient-gold">शास्त्रोक्त समाधान</span>
+              </h2>
 
-              <p className="mx-auto mt-6 max-w-2xl font-hindi text-lg leading-relaxed text-ivory/70">
-                वैदिक परंपरा एवं सिद्ध साधना द्वारा जीवन में शांति,
-                स्थिरता एवं सकारात्मक ऊर्जा का अनुभव करें।
+              <p className="mt-6 max-w-xl font-hindi text-lg leading-loose text-ivory/72">
+                माँ बगलामुखी सिद्धपीठ में अनुभवी पुरोहितों द्वारा पूजा, जप और
+                हवन भक्त की स्थिति के अनुसार विधिपूर्वक कराए जाते हैं।
               </p>
+            </div>
+          </Reveal>
 
-              <Link
-                to="/puja"
-                className="mt-10 inline-flex items-center gap-3 rounded-full bg-gradient-gold px-10 py-5 font-hindi text-lg text-ivory shadow-gold transition-transform duration-300 hover:scale-[1.04]"
+          <Reveal delay={0.12}>
+  <div className="relative space-y-5">
+
+    {steps.map((step, index) => (
+      <div
+        key={step}
+        className="
+          group
+          relative
+
+          overflow-hidden
+
+          rounded-2xl
+
+          border
+          border-gold/20
+
+          bg-card/45
+
+          p-5
+
+          backdrop-blur-md
+
+          transition-all
+          duration-500
+
+          hover:border-gold/50
+          hover:bg-card/70
+          hover:translate-x-1
+        "
+      >
+        {/* glow */}
+        <div className="absolute inset-0 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100 bg-[radial-gradient(circle_at_center,rgba(255,190,80,0.18),transparent_70%)]" />
+
+        <div className="relative z-10 flex items-start gap-5">
+          
+          {/* number */}
+          <div
+            className="
+              flex
+              h-12
+              w-12
+              shrink-0
+              items-center
+              justify-center
+
+              rounded-full
+
+              border
+              border-gold/30
+
+              bg-gradient-to-br
+              from-[#5c1208]
+              via-[#9d2a12]
+              to-[#f0a61b]
+
+              font-display
+              text-lg
+              text-[#fff2c7]
+
+              shadow-[0_0_25px_rgba(255,180,0,0.28)]
+            "
+          >
+            0{index + 1}
+          </div>
+
+          {/* text */}
+          <div className="pt-2 font-hindi text-lg leading-relaxed text-ivory/85">
+            {step}
+          </div>
+        </div>
+      </div>
+    ))}
+
+    {/* CONTACT BOX */}
+    <a
+      href="tel:+919669401930"
+      className="
+        group
+        relative
+
+        mt-8
+        flex
+        items-center
+        justify-between
+
+        overflow-hidden
+
+        rounded-2xl
+
+        border
+        border-[#ffcf70]/40
+
+        bg-gradient-to-r
+        from-[#4b0808]
+        via-[#8b1111]
+        to-[#d97706]
+
+        px-7
+        py-5
+
+        shadow-[0_0_45px_rgba(255,170,50,0.22)]
+
+        transition-all
+        duration-500
+
+        hover:scale-[1.02]
+        hover:shadow-[0_0_70px_rgba(255,190,70,0.4)]
+      "
+    >
+      {/* glow */}
+      <div
+        className="
+          absolute
+          inset-0
+
+          opacity-40
+
+          blur-3xl
+        "
+        style={{
+          background:
+            "radial-gradient(circle at center, rgba(255,200,80,0.35), transparent 70%)",
+        }}
+      />
+
+      {/* shine */}
+      <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 group-hover:translate-x-full" />
+
+      <div className="relative z-10">
+        <div className="font-display text-xs uppercase tracking-[0.35em] text-[#ffe6a6]">
+          संपर्क करें
+        </div>
+
+        <div className="mt-2 font-hindi text-2xl text-[#fff6dc]">
+          अभी पंडित जी से बात करें
+        </div>
+
+        <div className="mt-1 text-sm text-[#fff0cf]/80">
+          कॉल करके तुरंत मार्गदर्शन प्राप्त करें
+        </div>
+      </div>
+
+      <div
+        className="
+          relative
+          z-10
+
+          flex
+          h-14
+          w-14
+          items-center
+          justify-center
+
+          rounded-full
+
+          bg-[#fff3d2]
+
+          text-[#8b1111]
+
+          shadow-[0_0_25px_rgba(255,255,255,0.3)]
+        "
+      >
+        <ArrowRight className="h-6 w-6 rotate-[-45deg]" />
+      </div>
+    </a>
+  </div>
+</Reveal>
+        </div>
+
+        <div className="mt-16 grid gap-8 lg:grid-cols-[1fr_1.45fr]">
+          <Reveal>
+            <div className="relative h-full min-h-[460px] overflow-hidden rounded-lg border border-gold/25 bg-card">
+              <img src={havan} alt="मंदिर में हवन" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+              <div className="absolute inset-0 bg-gradient-to-t from-night via-night/40 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-7">
+                <div className="font-display text-xs uppercase tracking-[0.34em] text-gold">Featured</div>
+                <h3 className="mt-3 font-hindi text-3xl leading-snug text-ivory">माँ बगलामुखी महायज्ञ</h3>
+                <p className="mt-3 font-hindi text-sm leading-relaxed text-ivory/70">
+                  विशेष तिथि, संकल्प और समस्या के अनुसार अनुष्ठान की व्यवस्था।
+                </p>
+                <Link
+                  to="/puja"
+                  className="mt-6 inline-flex items-center gap-3 rounded-lg bg-gradient-gold px-5 py-3 font-hindi text-sm font-semibold text-night transition hover:-translate-y-0.5"
+                >
+                  पूजा सूची देखें
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </Reveal>
+
+          <StaggerGroup className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3" stagger={0.06}>
+            {services.map((service) => {
+              const Icon = service.icon;
+
+              return (
+                <StaggerItem key={service.title}>
+  <div
+    className="
+      group
+      h-full
+
+      rounded-2xl
+
+      border
+      border-gold/15
+
+      bg-card/55
+
+      p-6
+
+      backdrop-blur-sm
+
+      transition-all
+      duration-500
+
+      hover:-translate-y-1
+      hover:border-gold/45
+      hover:bg-card/75
+      hover:shadow-[0_0_35px_rgba(255,180,0,0.12)]
+    "
+  >
+  <div className="flex items-center gap-4">
+  <div className="grid h-11 w-11 place-items-center rounded-xl border border-gold/25 bg-gold/10 text-gold shadow-[0_0_20px_rgba(255,180,0,0.12)]">
+    <Icon className="h-5 w-5" />
+  </div>
+</div>
+                    <h3 className="mt-6 font-hindi text-2xl leading-snug text-ivory">{service.title}</h3>
+                    <p className="mt-3 font-hindi text-sm leading-relaxed text-ivory/66">{service.desc}</p>
+                    </div>
+                </StaggerItem>
+              );
+            })}
+          </StaggerGroup>
+        </div>
+
+        <Reveal delay={0.18}>
+          <div className="mt-10 grid overflow-hidden rounded-lg border border-gold/20 bg-card/45 lg:grid-cols-[0.72fr_1fr]">
+            <img src={swamiPuja} alt="मंदिर में पूजा" className="h-72 w-full object-cover lg:h-full" loading="lazy" />
+            <div className="p-7 sm:p-9">
+              <div className="font-display text-xs uppercase tracking-[0.34em] text-vermillion">Guided by Tradition</div>
+              <h3 className="mt-4 font-hindi text-3xl leading-snug text-ivory sm:text-4xl">
+                संकल्प से पूर्णाहुति तक पूरी विधि में सहायता।
+              </h3>
+              <p className="mt-4 max-w-2xl font-hindi text-base leading-loose text-ivory/70">
+                भक्त मंदिर आकर या दूरस्थ संकल्प द्वारा पूजा में सम्मिलित हो सकते हैं।
+                आवश्यक विवरण और शुभ मुहूर्त के लिए सीधे संपर्क करें।
+              </p>
+              <a
+                href="tel:+919669401930"
+                className="mt-7 inline-flex items-center gap-3 rounded-lg border border-gold/40 px-5 py-3 font-hindi text-sm text-gold transition hover:bg-gold/10"
               >
-                सभी पूजाएँ देखें
-
-                <ArrowRight className="h-5 w-5" />
-              </Link>
+                मार्गदर्शन के लिए कॉल करें
+                <ArrowRight className="h-4 w-4" />
+              </a>
             </div>
           </div>
         </Reveal>

@@ -1272,6 +1272,241 @@ function PujasPage() {
       
       {/* SACRED SEO MARQUEE */}
       <SacredMarquee />
+      {/* ALL PUJA LIST SECTION */}
+      <section className="relative overflow-hidden py-32">
+      
+        {/* background glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,200,0,0.08),transparent_70%)]" />
+      
+        {/* rotating yantra */}
+        <motion.img
+          src={yantra}
+          alt=""
+          animate={{ rotate: -360 }}
+          transition={{
+            duration: 220,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="
+            absolute
+            left-1/2
+            top-1/2
+            -z-10
+            h-[85vh]
+            w-[85vh]
+            -translate-x-1/2
+            -translate-y-1/2
+            opacity-[0.04]
+          "
+        />
+      
+        <div className="relative mx-auto max-w-7xl px-6">
+      
+          {/* heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9 }}
+            className="mx-auto mb-20 max-w-4xl text-center"
+          >
+            <div className="mb-5 text-xs uppercase tracking-[0.5em] text-yellow-300">
+              Sacred Ritual Collection
+            </div>
+      
+            <h2
+              className="
+                font-deva
+                text-5xl
+                md:text-7xl
+                leading-[1.35]
+                text-white
+              "
+            >
+              समस्त पूजाएँ
+              <br />
+      
+              <span className="text-gradient-gold">
+                एवं अनुष्ठान सूची
+              </span>
+            </h2>
+      
+            <p
+              className="
+                mx-auto
+                mt-8
+                max-w-3xl
+                font-deva
+                text-lg
+                leading-[1.9]
+                text-white/70
+              "
+            >
+              माँ पीताम्बरा बगलामुखी मंदिर में संपन्न होने वाली
+              सभी दिव्य पूजाएँ, हवन, जाप एवं विशेष साधनाएँ।
+            </p>
+          </motion.div>
+      
+          {/* PUJA LIST */}
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      
+            {chapters.flatMap((chapter) => chapter.pujas).map((puja, index) => {
+              const Icon = puja.icon;
+      
+              return (
+                <motion.div
+                  key={puja.title}
+                  initial={{
+                    opacity: 0,
+                    y: 60,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.7,
+                    delay: index * 0.03,
+                  }}
+                  whileHover={{
+                    y: -8,
+                    scale: 1.02,
+                  }}
+                  className="
+                    group
+                    relative
+                    overflow-hidden
+                    rounded-[2rem]
+      
+                    border
+                    border-yellow-400/15
+      
+                    bg-white/5
+      
+                    px-6
+                    py-5
+      
+                    backdrop-blur-xl
+      
+                    transition-all
+                    duration-500
+      
+                    hover:border-yellow-300/40
+                    hover:bg-yellow-400/[0.06]
+                  "
+                >
+      
+                  {/* glow */}
+                  <div
+                    className="
+                      absolute
+                      -right-10
+                      -top-10
+      
+                      h-32
+                      w-32
+      
+                      rounded-full
+      
+                      bg-yellow-300/10
+      
+                      blur-3xl
+                    "
+                  />
+      
+                  <div className="relative z-10 flex items-center gap-4">
+      
+                    {/* icon */}
+                    <div
+                      className="
+                        flex
+                        h-14
+                        w-14
+                        items-center
+                        justify-center
+      
+                        rounded-2xl
+      
+                        bg-gradient-to-br
+                        from-yellow-300
+                        to-yellow-500
+      
+                        text-black
+      
+                        shadow-[0_0_25px_rgba(255,200,0,0.35)]
+                      "
+                    >
+                      <Icon className="h-6 w-6" />
+                    </div>
+      
+                    {/* title */}
+                    <div>
+                      <h3
+                        className="
+                          font-deva
+                          text-xl
+                          leading-[1.7]
+                          text-white
+                        "
+                      >
+                        {puja.title}
+                      </h3>
+      
+                      <div className="mt-1 text-sm text-yellow-200/70">
+                        दिव्य वैदिक अनुष्ठान
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+      
+          {/* CTA BUTTON */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="mt-20 text-center"
+          >
+          <a
+          href="tel:+919669401930"
+          className="
+            inline-flex
+            items-center
+            gap-3
+        
+            rounded-full
+        
+            bg-gradient-to-r
+            from-yellow-300
+            to-yellow-500
+        
+            px-10
+            py-5
+        
+            font-semibold
+            text-black
+        
+            shadow-[0_0_40px_rgba(255,200,0,0.35)]
+        
+            transition-all
+            duration-300
+        
+            hover:scale-105
+          "
+        >
+          संपर्क करें
+        
+          <ArrowRight className="h-5 w-5" />
+        </a>
+
+          </motion.div>
+        </div>
+      </section>
 
       {/* SACRED PHOTO GALLERY */}
 <SacredGallery />

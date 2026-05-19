@@ -20,10 +20,26 @@ export function Donation() {
           </span>
         </Reveal>
         <Reveal delay={0.1}>
-          <h2 className="mt-6 font-hindi text-5xl md:text-7xl text-ivory leading-tight">
+          <h2 className="mt-6 font-hindi text-5xl md:text-7xl text-ivory leading-[1.45] md:leading-[1.35] pb-5">
             मंदिर सेवा में
             <br />
-            <span className="text-gradient-gold">अपना योगदान दें</span>
+            <span
+  className="
+    text-gradient-gold
+
+    inline-block
+
+    pb-3
+    pt-1
+
+    leading-[1.5]
+
+    overflow-visible
+  "
+>
+  अपना योगदान दें
+</span>
+
           </h2>
         </Reveal>
         <Reveal delay={0.2}>

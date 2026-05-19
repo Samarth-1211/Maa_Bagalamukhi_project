@@ -26,7 +26,7 @@ export function Footer() {
 
               <div>
                 <div className="font-display uppercase tracking-[0.28em] text-gold">
-                  Maa Baglamukhi
+                  Maa Bagalamukhi
                 </div>
 
                 <div className="font-hindi text-sm text-vermillion">

@@ -58,7 +58,7 @@ export function KnowDevi() {
                 <div className="absolute -inset-10 bg-gradient-gold opacity-30 blur-3xl animate-glow-pulse" />
                 <motion.img
                   src={devi}
-                  alt="Maa Baglamukhi"
+                  alt="Maa Bagalamukhi"
                   width={1280}
                   height={1280}
                   loading="lazy"

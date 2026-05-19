@@ -20,7 +20,7 @@ export const Route = createFileRoute("/donate")({
 
 // Temple UPI details — replace with the real handle when available
 const UPI_ID = "9016807833@ybl";
-const PAYEE_NAME = "Vijayanand Puri Ji Maharaj - Maa Pitambara Baglamukhi Mandir ";
+const PAYEE_NAME = "Vijayanand Puri Ji Maharaj - Maa Pitambara Bagalamukhi Mandir ";
 
 const sevaOptions = [
   { amount: 51, label: "दीप सेवा", desc: "एक दीप माँ के चरणों में अर्पण", icon: Flame },

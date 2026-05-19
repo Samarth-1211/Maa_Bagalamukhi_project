@@ -3,14 +3,44 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 import maaTrishulLogo from "@/assets/maa_trishul_logo.webp";
-import { Link } from "@tanstack/react-router";
 
 const links = [
-  { href: "#home", label: "Home", hi: "मुख्य" },
-  { href: "#events", label: "Havan/Puja", hi: "कार्यक्रम" },
-  { href: "#donation", label: "Donation", hi: "दान" },
-  { href: "#about", label: "About", hi: "परिचय" },
+  {
+    href: "/#home",
+    section: "#home",
+    label: "Home",
+    hi: "मुख्य",
+  },
+
+  {
+    href: "/#mandir",
+    section: "#mandir",
+    label: "Mandir",
+    hi: "मंदिर",
+  },
+
+  {
+    href: "/#events",
+    section: "#events",
+    label: "Havan",
+    hi: "पूजा",
+  },
+
+  {
+    href: "/#about",
+    section: "#about",
+    label: "Devi",
+    hi: "देवी",
+  },
+
+  {
+    href: "/#donation",
+    section: "#donation",
+    label: "Donation",
+    hi: "दान",
+  },
 ];
+
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -24,7 +54,7 @@ export function Navbar() {
       setScrolled(window.scrollY > 40);
 
       const sections = links.map((l) =>
-        document.querySelector(l.href)
+        document.querySelector(l.section)
       );
 
       sections.forEach((s, i) => {
@@ -35,7 +65,7 @@ export function Navbar() {
         ).getBoundingClientRect();
 
         if (r.top <= 120 && r.bottom >= 120) {
-          setActive(links[i].href);
+          setActive(links[i].section);
         }
       });
     };
@@ -107,7 +137,7 @@ export function Navbar() {
         {/* -------------------------------------------------------------------------- */}
 
         <a
-          href="#home"
+          href="/"
           className="
             flex
             items-center
@@ -125,8 +155,7 @@ export function Navbar() {
           {/*                                   LOGO                                     */}
           {/* -------------------------------------------------------------------------- */}
 
-          <a
-                href="/"
+          <span
                 className="
                   relative
 
@@ -188,7 +217,7 @@ export function Navbar() {
       pointer-events-none
     "
   />
-</a>
+</span>
           {/* -------------------------------------------------------------------------- */}
           {/*                                   TEXT                                     */}
           {/* -------------------------------------------------------------------------- */}
@@ -217,7 +246,7 @@ export function Navbar() {
                 whitespace-nowrap
               "
             >
-              Baglamukhi
+              Bagalamukhi
             </div>
 
             <div
@@ -234,7 +263,7 @@ export function Navbar() {
                 overflow-visible
               "
             >
-            ॐ ह्रीं बगलामुखी देव्यै ह्लीं ॐ नमः
+            ॐ ह्रीं बगलामुखी देव्यै नमः
             </div>
           </div>
         </a>
@@ -253,7 +282,7 @@ export function Navbar() {
           "
         >
           {links.map((l) => {
-            const isActive = active === l.href;
+            const isActive = active === l.section;
 
             return (
               <a
@@ -314,7 +343,7 @@ export function Navbar() {
           {/* DONATION BUTTON */}
 
           <a
-            href="#donation"
+            href="/#donation"
             className="
               ml-4
 

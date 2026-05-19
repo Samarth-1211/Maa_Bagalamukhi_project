@@ -49,17 +49,6 @@ function Embers({ count = 22 }: { count?: number }) {
 }
 
 /* --------------------------- Diya glyph --------------------------- */
-function Diya({ className = "" }: { className?: string }) {
-  return (
-    <div className={`relative inline-block ${className}`}>
-      <div className="absolute -inset-6 rounded-full bg-gold/30 blur-2xl animate-flicker" />
-      <div className="relative animate-flicker">
-        <div className="mx-auto h-6 w-3 rounded-t-full bg-gradient-to-t from-ember to-gold" />
-        <div className="mx-auto -mt-1 h-3 w-10 rounded-b-full bg-gradient-to-b from-ember to-maroon shadow-[0_4px_12px_oklch(0.32_0.12_25/0.6)]" />
-      </div>
-    </div>
-  );
-}
 
 /* --------------------------- Section heading --------------------------- */
 function ChapterLabel({ n, label }: { n: string; label: string }) {
@@ -122,22 +111,27 @@ function Intro() {
       </motion.div>
 
       {/* rotating yantra */}
-      <motion.img
-        src={yantra}
-        alt=""
-        aria-hidden
-        style={{ rotate: yantraRot, scale: yantraScale }}
-        className="pointer-events-none absolute left-1/2 top-1/2 -ml-[35vmin] -mt-[35vmin] h-[70vmin] w-[70vmin] opacity-20 mix-blend-screen"
-      />
+      
 
-      <Embers count={26} />
+     
 
       {/* sticky type */}
       <div className="sticky top-0 flex h-screen flex-col items-center justify-center px-6">
         <motion.div
           style={{ y: titleY, opacity: titleOpacity }}
-          className="relative z-10 flex flex-col items-center text-center"
-        >
+          className="
+  relative
+  z-10
+
+  pt-10 sm:pt-0
+  sm:mt-0
+
+  flex
+  flex-col
+  items-center
+  text-center
+">
+        
          
           <h1 className="mt-6 font-deva text-5xl leading-[1.5] sm:text-7xl md:text-8xl text-gradient-gold">
             जानिए माँ के
@@ -147,12 +141,10 @@ function Intro() {
           <p className="mt-6 max-w-xl text-base text-gold-soft/90 sm:text-lg">
             हर दीप एक प्रार्थना है, हर मन्त्र एक आशीर्वाद।
             <br />
-            <span className="font-display italic text-gold/70">
-              Scroll gently — let the story unfold.
-            </span>
+            
           </p>
 
-          <Diya className="mt-10" />
+          
 
           {/* scroll cue */}
           <motion.div
@@ -384,18 +376,114 @@ function ChapterOne() {
 
         {/* STATS */}
 
-        <div className="mt-8 grid grid-cols-2 gap-4">
-          <Stat
-            k="3 KM"
-            v="महाकालेश्वर से दूरी"
+        <div className="mt-10">
+        <div
+          className="
+            group
+            relative
+      
+            overflow-hidden
+      
+            rounded-3xl
+      
+            border
+            border-[#ffd27a]/30
+      
+            bg-gradient-to-r
+            from-[#3b0606]
+            via-[#7a1111]
+            to-[#d97706]
+      
+            px-8
+            py-7
+      
+            shadow-[0_0_40px_rgba(255,180,0,0.18)]
+      
+            transition-all
+            duration-500
+      
+            hover:scale-[1.02]
+            hover:shadow-[0_0_60px_rgba(255,190,60,0.35)]
+          "
+        >
+          {/* glowing aura */}
+          <div
+            className="
+              absolute
+              inset-0
+      
+              opacity-40
+      
+              blur-3xl
+            "
+            style={{
+              background:
+                "radial-gradient(circle at center, rgba(255,200,80,0.35), transparent 70%)",
+            }}
           />
-
-          <Stat
-            k="सिद्ध"
-            v="साधना पीठ"
+      
+          {/* shine effect */}
+          <div
+            className="
+              absolute
+              inset-0
+      
+              -translate-x-full
+      
+              bg-gradient-to-r
+              from-transparent
+              via-white/10
+              to-transparent
+      
+              transition-transform
+              duration-1000
+      
+              group-hover:translate-x-full
+            "
           />
+      
+          <div className="relative z-10 text-center">
+            <div
+              className="
+                font-display
+      
+                text-5xl
+                sm:text-6xl
+      
+                font-bold
+      
+                tracking-wide
+      
+                text-[#ffe7b0]
+      
+                drop-shadow-[0_0_18px_rgba(255,220,120,0.6)]
+              "
+            >
+              3 KM
+            </div>
+      
+            <div
+              className="
+                mt-3
+      
+                text-sm
+                sm:text-base
+      
+                uppercase
+      
+                tracking-[0.28em]
+      
+                text-[#fff1cc]/85
+              "
+              style={{
+                fontFamily: '"Cinzel", serif',
+              }}
+            >
+              महाकालेश्वर से दूरी
+            </div>
+          </div>
         </div>
-
+      </div>
         {/* -------------------------------------------------------------------------- */}
         {/*                               MAP CARD                                      */}
         {/* -------------------------------------------------------------------------- */}
@@ -634,7 +722,6 @@ function Stat({ k, v }: { k: string; v: string }) {
 }
 
 /* --------------------------- CHAPTER 2: the deity reveal --------------------------- */
-/* --------------------------- CHAPTER 2: the deity reveal --------------------------- */
 
 function ChapterTwo() {
   const ref = useRef<HTMLDivElement>(null);
@@ -645,103 +732,70 @@ function ChapterTwo() {
   });
 
   const smooth = useSpring(scrollYProgress, {
-    damping: 28,
-    stiffness: 85,
+    damping: 34,
+    stiffness: 95,
   });
-
-  /* -------------------------------------------------------------------------- */
-  /*                            CURTAIN ANIMATION                               */
-  /* -------------------------------------------------------------------------- */
 
   const leftX = useTransform(
     smooth,
-    [0.12, 0.55],
-    ["0%", "-110%"]
+    [0.14, 0.58],
+    ["0%", "-104%"]
   );
 
   const rightX = useTransform(
     smooth,
-    [0.12, 0.55],
-    ["0%", "110%"]
+    [0.14, 0.58],
+    ["0%", "104%"]
+  );
+
+  const curtainScale = useTransform(
+    smooth,
+    [0.14, 0.58],
+    [1, 1.04]
   );
 
   const curtainOpacity = useTransform(
     smooth,
-    [0, 0.18, 0.5],
-    [1, 1, 0.15]
+    [0, 0.52, 0.7],
+    [1, 1, 0.2]
   );
-
-  /* -------------------------------------------------------------------------- */
-  /*                      TEXT APPEARS HALFWAY OPEN                             */
-  /* -------------------------------------------------------------------------- */
 
   const captionOpacity = useTransform(
     smooth,
-    [0.26, 0.46],
+    [0.14, 0.28],
     [0, 1]
   );
 
   const captionY = useTransform(
     smooth,
-    [0.26, 0.46],
-    [80, 0]
+    [0.14, 0.28],
+    [18, 0]
   );
-
-  /* -------------------------------------------------------------------------- */
-  /*                           IMAGE CINEMATICS                                 */
-  /* -------------------------------------------------------------------------- */
 
   const imgScale = useTransform(
     smooth,
     [0, 1],
-    [1.08, 1.18]
+    [1.03, 1.08]
   );
 
   const imgOpacity = useTransform(
     smooth,
-    [0, 0.3, 1],
-    [0.95, 0.92, 1]
+    [0, 0.32, 1],
+    [0.82, 1, 1]
   );
 
   const imgDim = useTransform(
     smooth,
-    [0, 0.5, 1],
-    [0.55, 0.35, 0.15]
+    [0, 0.48, 1],
+    [0.68, 0.34, 0.16]
   );
 
   return (
     <section
       ref={ref}
-      className="
-        relative
-        h-[120vh]
-
-        overflow-hidden
-
-        border-t
-        border-gold/10
-      "
+      className="relative h-[130vh] overflow-hidden border-t border-gold/10 bg-night"
     >
-      <div
-        className="
-          sticky
-          top-0
-
-          flex
-          h-screen
-          w-full
-
-          items-center
-          justify-center
-
-          overflow-hidden
-        "
-      >
-
-        {/* -------------------------------------------------------------------------- */}
-        {/*                              SANCTUM IMAGE                                  */}
-        {/* -------------------------------------------------------------------------- */}
-
+      <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
         <motion.img
           src={mandirSanctum}
           alt="माँ बगलामुखी के दिव्य दर्शन"
@@ -749,314 +803,160 @@ function ChapterTwo() {
             scale: imgScale,
             opacity: imgOpacity,
           }}
-          className="
-            absolute
-            inset-0
-
-            h-full
-            w-full
-
-            object-cover
-          "
+          className="absolute left-1/2 top-1/2 h-screen w-auto max-w-none -translate-x-1/2 -translate-y-1/2 object-contain md:h-[108vh]"
           loading="lazy"
           width={1080}
           height={1920}
         />
 
-        {/* -------------------------------------------------------------------------- */}
-        {/*                               BASE WASH                                     */}
-        {/* -------------------------------------------------------------------------- */}
-
         <motion.div
           style={{
             opacity: imgDim,
           }}
-          className="
-            absolute
-            inset-0
-
-            bg-night-deep
-          "
+          className="absolute inset-0 bg-night-deep"
         />
 
-        {/* -------------------------------------------------------------------------- */}
-        {/*                           DIVINE CENTER LIGHT                               */}
-        {/* -------------------------------------------------------------------------- */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_28%,rgba(8,4,3,0.54)_72%,rgba(8,4,3,0.9)_100%)]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[42vh] bg-gradient-to-t from-black/82 via-black/38 to-transparent" />
 
-        <div
-          className="
-            pointer-events-none
+        <div className="absolute inset-x-0 top-0 z-30 h-28 border-b border-gold/20 bg-night/70 shadow-[0_18px_60px_rgba(0,0,0,0.45)]">
+          <img
+            src={pardaCurtain}
+            alt=""
+            aria-hidden="true"
+            className="h-full w-full object-cover object-top opacity-80"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#3b0303]/70 via-[#8b1111]/55 to-night/85" />
+          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/80 to-transparent" />
+        </div>
 
-            absolute
-            left-1/2
-            top-0
-
-            z-20
-
-            h-full
-            w-px
-
-            -translate-x-1/2
-
-            bg-gradient-to-b
-            from-transparent
-            via-gold/40
-            to-transparent
-          "
-        />
-
-        <div
-          className="
-            pointer-events-none
-
-            absolute
-            left-1/2
-            top-1/2
-
-            z-20
-
-            h-[30rem]
-            w-[30rem]
-
-            -translate-x-1/2
-            -translate-y-1/2
-
-            rounded-full
-
-            bg-gold/10
-
-            blur-3xl
-          "
-        />
-
-        {/* -------------------------------------------------------------------------- */}
-        {/*                               LEFT CURTAIN                                  */}
-        {/* -------------------------------------------------------------------------- */}
 
         <motion.div
           style={{
             x: leftX,
+            scaleX: curtainScale,
             opacity: curtainOpacity,
           }}
-          className="
-            absolute
-            inset-y-0
-            left-0
-
-            w-1/2
-
-            overflow-hidden
-
-            shadow-[inset_-22px_0_70px_rgba(0,0,0,0.75)]
-          "
+          className="absolute inset-y-0 left-0 z-20 w-[54%] origin-left overflow-hidden shadow-[inset_-30px_0_90px_rgba(0,0,0,0.72)]"
         >
-          <div className="relative h-full w-full">
-
-            <img
-              src={pardaCurtain}
-              alt=""
-              aria-hidden="true"
-              className="
-                h-full
-                w-full
-
-                object-cover
-                object-right
-              "
-            />
-
-            {/* curtain shading */}
-
-            <div
-              className="
-                absolute
-                inset-0
-
-                bg-gradient-to-r
-                from-[#5a0000]/95
-                via-[#8b0f0f]/90
-                to-[#220000]/95
-              "
-            />
-
-            {/* fabric shine */}
-
-            <div
-              className="
-                absolute
-                inset-0
-
-                bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.14),transparent_35%),linear-gradient(180deg,rgba(255,255,255,0.08),transparent_30%,rgba(0,0,0,0.22))]
-              "
-            />
-          </div>
+          <img
+            src={pardaCurtain}
+            alt=""
+            aria-hidden="true"
+            className="h-full w-full object-cover object-right"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#4b0303]/90 via-[#9c1515]/76 to-[#260101]/92" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,221,130,0.08),transparent_22%,rgba(0,0,0,0.16)_56%,rgba(255,221,130,0.12)_86%,transparent)]" />
+          <div className="absolute right-0 top-0 h-full w-10 bg-gradient-to-l from-black/60 to-transparent" />
         </motion.div>
-
-        {/* -------------------------------------------------------------------------- */}
-        {/*                              RIGHT CURTAIN                                  */}
-        {/* -------------------------------------------------------------------------- */}
 
         <motion.div
           style={{
             x: rightX,
+            scaleX: curtainScale,
             opacity: curtainOpacity,
           }}
-          className="
-            absolute
-            inset-y-0
-            right-0
-
-            w-1/2
-
-            overflow-hidden
-
-            shadow-[inset_22px_0_70px_rgba(0,0,0,0.75)]
-          "
+          className="absolute inset-y-0 right-0 z-20 w-[54%] origin-right overflow-hidden shadow-[inset_30px_0_90px_rgba(0,0,0,0.72)]"
         >
-          <div className="relative h-full w-full">
-
-            <img
-              src={pardaCurtain}
-              alt=""
-              aria-hidden="true"
-              className="
-                h-full
-                w-full
-
-                object-cover
-                object-left
-
-                scale-x-[-1]
-              "
-            />
-
-            {/* curtain shading */}
-
-            <div
-              className="
-                absolute
-                inset-0
-
-                bg-gradient-to-l
-                from-[#5a0000]/95
-                via-[#8b0f0f]/90
-                to-[#220000]/95
-              "
-            />
-
-            {/* fabric shine */}
-
-            <div
-              className="
-                absolute
-                inset-0
-
-                bg-[radial-gradient(circle_at_70%_20%,rgba(255,255,255,0.14),transparent_35%),linear-gradient(180deg,rgba(255,255,255,0.08),transparent_30%,rgba(0,0,0,0.22))]
-              "
-            />
-          </div>
+          <img
+            src={pardaCurtain}
+            alt=""
+            aria-hidden="true"
+            className="h-full w-full scale-x-[-1] object-cover object-left"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-l from-[#4b0303]/90 via-[#9c1515]/76 to-[#260101]/92" />
+          <div className="absolute inset-0 bg-[linear-gradient(270deg,rgba(255,221,130,0.08),transparent_22%,rgba(0,0,0,0.16)_56%,rgba(255,221,130,0.12)_86%,transparent)]" />
+          <div className="absolute left-0 top-0 h-full w-10 bg-gradient-to-r from-black/60 to-transparent" />
         </motion.div>
 
-        {/* -------------------------------------------------------------------------- */}
-        {/*                             DIVINE REVEAL TEXT                              */}
-        {/* -------------------------------------------------------------------------- */}
+        {/* TOP MANTRA */}
+<motion.div
+  style={{
+    opacity: captionOpacity,
+    y: captionY,
+  }}
+  className="
+    absolute
+    inset-x-0
 
-        <motion.div
-          style={{
-            opacity: captionOpacity,
-            y: captionY,
-          }}
-          className="
-            relative
-            z-30
+    top-30
+    sm:top-28
+    md:top-32
 
-            max-w-3xl
+    z-30
 
-            px-8
+    mx-auto
+    max-w-3xl
 
-            text-center
-          "
-        >
-          <ChapterLabel
-            n="अध्याय दो"
-            label="The Divine Reveal"
-          />
+    px-5
 
-          {/* MAIN MANTRA */}
+    text-center
+  "
+>
+  <div className="mx-auto mb-5 h-px w-28 bg-gradient-to-r from-transparent via-gold to-transparent" />
 
-          <h2
-            className="
-              mt-6
+  <h2
+    className="
+      font-deva
 
-              font-deva
+      text-3xl
+      sm:text-5xl
+      md:text-6xl
 
-              text-5xl
-              sm:text-6xl
-              md:text-7xl
+      leading-[1.45]
 
-              leading-[1.55]
+      text-[#ffd67a]
 
-              overflow-visible
+      drop-shadow-[0_0_30px_rgba(255,210,90,0.55)]
 
-              text-gradient-gold
-            "
-          >
-            ॥ ॐ ह्लीं बगलामुख्यै नमः ॥
-          </h2>
+      animate-pulse
+    "
+    style={{
+      textShadow:
+        "0 4px 25px rgba(0,0,0,1), 0 0 45px rgba(255,210,100,0.45)",
+    }}
+  >
+    ॥ ॐ ह्लीं बगलामुख्यै नमः ॥
+  </h2>
+</motion.div>
 
-          {/* SUBTEXT */}
+{/* BOTTOM DESCRIPTION */}
+<motion.div
+  style={{
+    opacity: captionOpacity,
+    y: captionY,
+  }}
+  className="
+    absolute
+    inset-x-0
 
-          <p
-            className="
-              mt-7
+    bottom-10
+    sm:bottom-16
 
-              font-display
+    z-30
 
-              text-lg
-              sm:text-xl
+    mx-auto
+    max-w-2xl
 
-              italic
+    px-5
 
-              leading-[2]
-
-              text-gold-soft
-            "
-          >
-            स्वर्णिम आभा में
-            <span className="text-gold">
-              {" "}
-              माँ बगलामुखी{" "}
-            </span>
-            के दिव्य दर्शन।
-          </p>
-
-          {/* SMALL GLOW LINE */}
-
-          <div
-            className="
-              mx-auto
-              mt-8
-
-              h-px
-              w-32
-
-              bg-gradient-to-r
-              from-transparent
-              via-gold
-              to-transparent
-            "
-          />
-        </motion.div>
-
-        {/* -------------------------------------------------------------------------- */}
-        {/*                                 EMBERS                                      */}
-        {/* -------------------------------------------------------------------------- */}
-
-        <Embers count={18} />
+    text-center
+  "
+>
+  <p className="font-deva text-base font-semibold leading-[2] text-ivory sm:text-xl [text-shadow:0_3px_14px_rgba(0,0,0,1),0_0_18px_rgba(0,0,0,0.88)]">
+    पावन पर्दा खुलते ही माँ पीताम्बरा के शांत, तेजस्वी और कृपामय दर्शन।
+  </p>
+</motion.div>
+        <Embers count={8} />
       </div>
     </section>
   );
-}/* --------------------------- CHAPTER 3: the unique mahapuja --------------------------- */
+}
+
+/* --------------------------- CHAPTER 3: the unique mahapuja --------------------------- */
 function ChapterThree() {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -1118,9 +1018,8 @@ function ChapterThree() {
       <div className="relative mx-auto max-w-5xl text-center">
         {/* heading */}
         <motion.div style={{ y: titleY }}>
-          <ChapterLabel n="अध्याय तीन" label="The Rare Sadhana" />
 
-          <h2 className="mt-6 font-deva  text-4xl sm:text-6xl md:text-7xl  leading-[1.45] md:leading-[1.40] text-gradient-gold sm:text-6xl md:text-7xl">
+          <h2 className="mt-6 font-deva  text-4xl sm:text-6xl md:text-7xl  leading-[1.7] md:leading-[1.40] text-gradient-gold sm:text-6xl md:text-7xl">
             लक्ष्मी विषकन्या दोष
             <br />
             निवारण महापूजा
@@ -1156,7 +1055,7 @@ function ChapterThree() {
           />
 
           <RitualCard
-            icon={<Diya />}
+            icon={<Sparkles className="h-5 w-5" />}
             title="सहस्रधारा अभिषेक"
             body="हज़ार धाराओं से दिव्य अभिषेक प्रक्रिया।"
           />
@@ -1194,10 +1093,299 @@ function ChapterThree() {
             </span>
 
             <span className="relative z-10 text-sm opacity-70">
-              Know More →
+            अधिक जानें →
             </span>
           </a>
         </motion.div>
+
+        {/* OTHER PUJAS SECTION */}
+<motion.div
+  initial={{
+    opacity: 0,
+    y: 50,
+  }}
+  whileInView={{
+    opacity: 1,
+    y: 0,
+  }}
+  transition={{
+    duration: 1,
+    delay: 0.2,
+  }}
+  viewport={{ once: true }}
+  className="
+    relative
+
+    mx-auto
+    mt-24
+
+    max-w-5xl
+
+    overflow-hidden
+
+    rounded-[2.5rem]
+
+    border
+    border-gold/15
+
+    bg-night/70
+
+    px-8
+    py-14
+
+    backdrop-blur-xl
+
+    shadow-[0_0_60px_rgba(255,180,0,0.08)]
+  "
+>
+
+  {/* aura */}
+  <div
+    className="
+      absolute
+      inset-0
+
+      bg-[radial-gradient(circle_at_center,rgba(255,190,0,0.08),transparent_70%)]
+    "
+  />
+
+  {/* rotating yantra */}
+  <motion.img
+    src={yantra}
+    alt=""
+    animate={{ rotate: 360 }}
+    transition={{
+      duration: 160,
+      repeat: Infinity,
+      ease: "linear",
+    }}
+    className="
+      absolute
+      right-[-10%]
+      top-1/2
+
+      h-[320px]
+      w-[320px]
+
+      -translate-y-1/2
+
+      opacity-[0.05]
+    "
+  />
+
+  <div className="relative z-10 text-center">
+
+    {/* top label */}
+    <div
+      className="
+        inline-flex
+        items-center
+        gap-3
+
+        rounded-full
+
+        border
+        border-gold/20
+
+        bg-gold/10
+
+        px-5
+        py-2
+
+        text-xs
+
+        uppercase
+
+        tracking-[0.3em]
+
+        text-gold
+      "
+      style={{
+        fontFamily: '"Cinzel", serif',
+      }}
+    >
+      ✦ अन्य दिव्य अनुष्ठान ✦
+    </div>
+
+    {/* title */}
+    <h3
+      className="
+        mt-8
+
+        font-deva
+
+        text-4xl
+        sm:text-5xl
+        md:text-6xl
+
+        leading-[1.5]
+
+        text-gradient-gold
+      "
+    >
+      यहाँ अन्य पूजाएँ भी
+      <br />
+      करवाई जाती हैं
+    </h3>
+
+    {/* description */}
+    <p
+      className="
+        mx-auto
+        mt-8
+
+        max-w-3xl
+
+        font-deva
+
+        text-lg
+
+        leading-[2]
+
+        text-foreground/75
+      "
+    >
+      माँ बगलामुखी साधना, कालसर्प दोष शांति,
+      पितृ दोष निवारण, नवग्रह शांति,
+      महामृत्युंजय जाप, तंत्र बाधा निवारण,
+      व्यापार वृद्धि एवं अनेक सिद्ध वैदिक
+      एवं तांत्रिक अनुष्ठान यहाँ
+      विधि-विधान से संपन्न कराए जाते हैं।
+    </p>
+
+    {/* puja chips */}
+    <div
+      className="
+        mt-10
+
+        flex
+        flex-wrap
+        justify-center
+
+        gap-4
+      "
+    >
+      {[
+        "कालसर्प दोष शांति",
+        "महामृत्युंजय जाप",
+        "नवग्रह शांति",
+        "तंत्र बाधा निवारण",
+        "व्यापार वृद्धि पूजा",
+        "पितृ दोष निवारण",
+      ].map((item) => (
+        <div
+          key={item}
+          className="
+            rounded-full
+
+            border
+            border-gold/20
+
+            bg-gold/5
+
+            px-5
+            py-3
+
+            text-sm
+
+            text-gold-soft
+
+            backdrop-blur-md
+          "
+        >
+          {item}
+        </div>
+      ))}
+    </div>
+
+    {/* buttons */}
+    <div
+      className="
+        mt-12
+
+        flex
+        flex-col
+        sm:flex-row
+
+        items-center
+        justify-center
+
+        gap-5
+      "
+    >
+
+      {/* see all pujas */}
+      <a
+        href="/puja"
+        className="
+          inline-flex
+          items-center
+          gap-3
+
+          rounded-full
+
+          border
+          border-gold/30
+
+          bg-white/5
+
+          px-8
+          py-4
+
+          font-deva
+
+          text-white
+
+          backdrop-blur-md
+
+          transition-all
+          duration-300
+
+          hover:scale-105
+          hover:border-gold/60
+          hover:bg-gold/10
+        "
+      >
+        समस्त पूजाएँ देखें
+      </a>
+
+      {/* contact button */}
+      <a
+        href="tel:+919669401930"
+        className="
+          inline-flex
+          items-center
+          gap-3
+
+          rounded-full
+//ho gaya 
+          bg-gradient-to-r
+          from-[#ffcc70]
+          via-[#f59e0b]
+          to-[#ffcc70]
+
+          px-8
+          py-4
+
+          font-semibold
+
+          text-black
+
+          shadow-[0_0_35px_rgba(255,180,0,0.35)]
+
+          transition-all
+          duration-300
+
+          hover:scale-105
+        "
+      >
+        संपर्क करें
+      </a>
+    </div>
+  </div>
+</motion.div>
+
+
       </div>
     </motion.section>
   );
@@ -1290,7 +1478,7 @@ function ChapterFour() {
 
       <div className="relative mx-auto max-w-6xl px-6 py-32 md:px-16">
         <div className="max-w-xl">
-          <ChapterLabel n="अध्याय चार" label="The Lineage" />
+          
           <h2 className="mt-5 font-deva text-4xl leading-tight text-gradient-gold sm:text-5xl">
             गुरु परंपरा
           </h2>
@@ -1370,8 +1558,8 @@ function ChapterFive() {
       className="relative overflow-hidden border-t border-gold/10 px-6 py-32 md:px-16"
     >
       <div className="mx-auto max-w-5xl text-center">
-        <ChapterLabel n="अध्याय पाँच" label="The Sanctuary" />
-        <h2 className="mt-5 font-deva text-4xl leading-tight text-gradient-gold sm:text-5xl">
+       
+        <h2 className="mt-5 font-deva text-4xl leading-[1.7] text-gradient-gold sm:text-5xl">
           श्रद्धालुओं के लिए व्यवस्था
         </h2>
         <p className="mx-auto mt-6 max-w-2xl font-display text-lg text-foreground/70">
