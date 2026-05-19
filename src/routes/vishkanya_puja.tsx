@@ -210,10 +210,10 @@ function ChapterWhat() {
 
       <motion.div style={{ y: textY }} className="relative order-2 max-w-xl md:order-1">
         <ChapterLabel n="अध्याय एक" label="What is this Mahapuja" />
-        <h2 className="mt-5 font-deva text-4xl sm:text-5xl leading-[3.45] md:leading-[1.50] overflow-hidden pb-3 tracking-[0.01em] text-gradient-gold">
+        <h2 className="mt-5 font-deva text-4xl sm:text-5xl leading-[1.35] md:leading-[1.5] tracking-[0.01em] text-gradient-gold">
         यह महापूजा क्या है?
       </h2>
-        <p className="mt-15 font-display text-lg leading-[5] md:leading-[2.3] text-foreground/80">
+        <p className="mt-8 font-display text-lg leading-[2.1] md:leading-[2.3] text-foreground/80">
           <span className="text-gold">लक्ष्मी विषकन्या दोष निवारण महापूजा</span>{" "}
           माँ पीताम्बरा बगलामुखी मंदिर में संपन्न होने वाला एक अत्यंत दुर्लभ एवं दिव्य साधना है, जो केवल सिद्ध योगियों एवं गुरु परंपरा के सान्निध्य में संपन्न कराया जाता है।
 इस अनुष्ठान की प्रमुख विशेषता “सहस्रधारा पात्र अभिषेक” है, जिसमें प्राचीन बावड़ियों एवं पवित्र कुओं के दिव्य जल से साधक का अभिषेक कर आध्यात्मिक शुद्धिकरण एवं दोष निवारण किया जाता है।
@@ -224,8 +224,6 @@ function ChapterWhat() {
           सम्बन्धों, धन एवं स्वास्थ्य पर विष-तुल्य प्रभाव डालती है। यह महापूजा
           उसी विष को अमृत में परिवर्तित करने का संकल्प है।
         </p>
-        <br />
-
         <p className="mt-4 leading-relaxed text-foreground/70">
         अनुष्ठान से पूर्व साधक की कुंडली, ग्रह स्थिति एवं दोषों का गहन अध्ययन कर विशेष मंत्र, साधना एवं हवन प्रक्रिया निर्धारित की जाती है।मान्यता है कि यह दिव्य साधना केवल लक्ष्मी विषकन्या दोष ही नहीं, बल्कि मंगल दोष, कालसर्प दोष, पितृ दोष, ऋण दोष एवं अन्य अनेक आध्यात्मिक बाधाओं की शांति हेतु भी अत्यंत प्रभावशाली मानी जाती है।
         </p>
