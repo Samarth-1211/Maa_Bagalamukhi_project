@@ -78,7 +78,7 @@ export function Footer() {
             <ul className="space-y-3 font-hindi text-ivory/75">
               <li>
                 <a
-                  href="#home"
+                  href="/#home"
                   className="transition-colors hover:text-vermillion"
                 >
                   मुख्य पृष्ठ
@@ -87,7 +87,7 @@ export function Footer() {
 
               <li>
                 <a
-                  href="#events"
+                  href="/#events"
                   className="transition-colors hover:text-vermillion"
                 >
                   कार्यक्रम
@@ -96,7 +96,7 @@ export function Footer() {
 
               <li>
                 <a
-                  href="#about"
+                  href="/#about"
                   className="transition-colors hover:text-vermillion"
                 >
                   देवी परिचय
@@ -105,7 +105,7 @@ export function Footer() {
 
               <li>
                 <a
-                  href="#donation"
+                  href="/#donation"
                   className="transition-colors hover:text-vermillion"
                 >
                   दान
