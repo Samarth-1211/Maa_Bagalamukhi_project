@@ -92,71 +92,11 @@ function Intro() {
   return (
     <section
       ref={ref}
-      className="relative h-[120vh] w-full overflow-hidden bg-night-deep"
-    >
-      {/* parallax bg */}
-      <motion.div
-        style={{ y: bgY }}
-        className="absolute inset-0 -top-[10vh] h-[130vh]"
-      >
-        <img
-          src={mandirExteriorIntro}
-          alt="माँ पीताम्बरा बगलामुखी मंदिर का बाहरी दृश्य"
-          className="h-full w-full object-cover opacity-60"
-          width={1920}
-          height={1080}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-night-deep/60 via-night-deep/40 to-night-deep" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,oklch(0.07_0.015_30/0.9)_85%)]" />
-      </motion.div>
-
-      {/* rotating yantra */}
-      
-
+      className="relative h-[8vh] w-full overflow-hidden bg-night-deep"    >
      
 
       {/* sticky type */}
-      <div className="sticky top-0 flex h-screen flex-col items-center justify-center px-6">
-        <motion.div
-          style={{ y: titleY, opacity: titleOpacity }}
-          className="
-  relative
-  z-10
-
-  pt-10 sm:pt-0
-  sm:mt-0
-
-  flex
-  flex-col
-  items-center
-  text-center
-">
-        
-         
-          <h1 className="mt-6 font-deva text-5xl leading-[1.5] sm:text-7xl md:text-8xl text-gradient-gold">
-            जानिए माँ के
-            <br />
-            दिव्य धाम को
-          </h1>
-          <p className="mt-6 max-w-xl text-base text-gold-soft/90 sm:text-lg">
-            हर दीप एक प्रार्थना है, हर मन्त्र एक आशीर्वाद।
-            <br />
-            
-          </p>
-
-          
-
-          {/* scroll cue */}
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-            className="mt-12 flex flex-col items-center gap-2 text-gold/70"
-          >
-            <span className="text-[10px] uppercase tracking-[0.4em]">scroll · आगे</span>
-            <ChevronDown className="h-5 w-5" />
-          </motion.div>
-        </motion.div>
-      </div>
+      
     </section>
   );
 }
@@ -345,7 +285,7 @@ function ChapterOne() {
             text-gradient-gold
           "
         >
-          जहाँ माँ का धाम है
+        जानिए माँ के दिव्य धाम को
         </h2>
 
         {/* DESCRIPTION */}
@@ -795,7 +735,7 @@ function ChapterTwo() {
       ref={ref}
       className="relative h-[130vh] overflow-hidden border-t border-gold/10 bg-night"
     >
-      <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
+      <div className="sticky top-0 flex h-full w-screen items-center justify-center overflow-hidden">
         <motion.img
           src={mandirSanctum}
           alt="माँ बगलामुखी के दिव्य दर्शन"
@@ -803,8 +743,28 @@ function ChapterTwo() {
             scale: imgScale,
             opacity: imgOpacity,
           }}
-          className="absolute left-1/2 top-1/2 h-screen w-auto max-w-none -translate-x-1/2 -translate-y-1/2 object-contain md:h-[108vh]"
-          loading="lazy"
+
+          className="
+  absolute
+  left-1/2
+  top-1/2
+
+  w-[100vw]
+  h-auto
+
+  max-h-[100vh]
+
+  -translate-x-1/2
+  -translate-y-1/2
+
+  object-contain
+
+  md:h-[108vh]
+  md:w-auto
+"
+         
+          
+           loading="lazy"
           width={1080}
           height={1920}
         />
@@ -873,83 +833,9 @@ function ChapterTwo() {
         </motion.div>
 
         {/* TOP MANTRA */}
-<motion.div
-  style={{
-    opacity: captionOpacity,
-    y: captionY,
-  }}
-  className="
-    absolute
-    inset-x-0
 
-    top-30
-    sm:top-28
-    md:top-32
 
-    z-30
 
-    mx-auto
-    max-w-3xl
-
-    px-5
-
-    text-center
-  "
->
-  <div className="mx-auto mb-5 h-px w-28 bg-gradient-to-r from-transparent via-gold to-transparent" />
-
-  <h2
-    className="
-      font-deva
-
-      text-3xl
-      sm:text-5xl
-      md:text-6xl
-
-      leading-[1.45]
-
-      text-[#ffd67a]
-
-      drop-shadow-[0_0_30px_rgba(255,210,90,0.55)]
-
-      animate-pulse
-    "
-    style={{
-      textShadow:
-        "0 4px 25px rgba(0,0,0,1), 0 0 45px rgba(255,210,100,0.45)",
-    }}
-  >
-    ॥ ॐ ह्लीं बगलामुख्यै नमः ॥
-  </h2>
-</motion.div>
-
-{/* BOTTOM DESCRIPTION */}
-<motion.div
-  style={{
-    opacity: captionOpacity,
-    y: captionY,
-  }}
-  className="
-    absolute
-    inset-x-0
-
-    bottom-10
-    sm:bottom-16
-
-    z-30
-
-    mx-auto
-    max-w-2xl
-
-    px-5
-
-    text-center
-  "
->
-  <p className="font-deva text-base font-semibold leading-[2] text-ivory sm:text-xl [text-shadow:0_3px_14px_rgba(0,0,0,1),0_0_18px_rgba(0,0,0,0.88)]">
-    पावन पर्दा खुलते ही माँ पीताम्बरा के शांत, तेजस्वी और कृपामय दर्शन।
-  </p>
-</motion.div>
         <Embers count={8} />
       </div>
     </section>
@@ -1223,9 +1109,9 @@ function ChapterThree() {
         text-gradient-gold
       "
     >
-      यहाँ अन्य पूजाएँ भी
+    समस्त पूजाएँ
       <br />
-      करवाई जाती हैं
+      हवन एवं अनुष्ठान
     </h3>
 
     {/* description */}

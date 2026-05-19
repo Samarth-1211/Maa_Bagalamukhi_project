@@ -30,7 +30,7 @@ export function Hero() {
         <div className="max-w-3xl">
           
 
-          <h1 className="mt-8 font-hindi text-[3.2rem] leading-[1.7] tracking-normal text-ivory sm:text-7xl lg:text-8xl">
+          <h1 className="mt-6 font-hindi text-[3.2rem] leading-[1.3] tracking-normal text-ivory sm:text-7xl lg:text-8xl">
             माँ पीताम्बरा
             <span className="block text-gradient-gold">बगलामुखी मंदिर</span>
           </h1>

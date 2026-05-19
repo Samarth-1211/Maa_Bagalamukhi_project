@@ -458,8 +458,7 @@ function ChapterRitual() {
           </p>
         </div>
 
-        <ol className="relative mt-20 border-l border-gold/30 pl-8 md:pl-12">
-          {steps.map((s, i) => (
+        <ol className="relative mt-20 pl-8 md:pl-12">          {steps.map((s, i) => (
             <motion.li
               key={s.n}
               initial={{ opacity: 0, x: -30 }}
@@ -468,7 +467,7 @@ function ChapterRitual() {
               transition={{ duration: 0.7, delay: i * 0.05, ease: "easeOut" }}
               className="relative mb-14 last:mb-0"
             >
-              <span className="absolute -left-[3.05rem] flex h-10 w-10 items-center justify-center rounded-full border border-gold/40 bg-night-deep text-gold shadow-glow md:-left-[3.55rem]">
+              <span className="absolute -left-0 flex h-10 w-10 items-center justify-center rounded-full border border-gold/40 bg-night-deep text-gold shadow-glow md:-left-[3.55rem]">
                 <span className="font-deva text-lg">{s.n}</span>
               </span>
               <h3 className="font-deva text-2xl text-gold">{s.title}</h3>

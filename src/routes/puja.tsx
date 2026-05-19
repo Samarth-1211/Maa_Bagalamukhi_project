@@ -14,6 +14,10 @@ import photo_gallery_4 from "@/assets/photo_gallery_4.webp";
 import photo_gallery_5 from "@/assets/photo_gallery_5.webp";
 import photo_gallery_6 from "@/assets/photo_gallery_6.webp";
 
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
 import {
   Flame,
   ShieldCheck,
@@ -35,6 +39,7 @@ import {
   Skull,
   Gem,
   ArrowRight,
+
   type LucideIcon,
 } from "lucide-react";
 
@@ -879,6 +884,20 @@ const galleryImages = [
 ];
 
 function SacredGallery() {
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      loop: true,
+      align: "center",
+    },
+    [
+      Autoplay({
+        delay: 4500,
+        stopOnInteraction: false,
+      }),
+    ]
+  );
+
   return (
     <section className="relative overflow-hidden py-36">
       
@@ -924,33 +943,42 @@ function SacredGallery() {
           transition={{
             duration: 1,
           }}
-          className="mx-auto mb-24 max-w-3xl text-center"
+          className="mx-auto mb-24 max-w-3xl text-center overflow-visible"
         >
           <div className="mb-5 text-xs uppercase tracking-[0.45em] text-yellow-300">
             Divine Gallery
           </div>
 
           <h2
-            className="
-              font-deva
-
-              text-5xl
-              md:text-7xl
-
-              leading-[1.45]
-              md:leading-[1.3]
-
-              text-white
-            "
-          >
-            दिव्य दर्शन
-            <br />
-
-            <span className="text-gradient-gold">
-              गैलरी
-            </span>
-          </h2>
-
+          className="
+            font-deva
+        
+            text-5xl
+            md:text-7xl
+        
+            leading-[1.2]
+            md:leading-[1.2]
+        
+            text-white
+          "
+        >
+          दिव्य दर्शन
+          <br />
+        
+          <span className="
+          block
+          text-gradient-gold
+      
+          leading-[1.35]
+      
+          pt-2
+        "
+        style={{
+          paddingBottom: "0.25em",
+        }}>
+            गैलरी
+          </span>
+        </h2>
           <p
             className="
               mx-auto
@@ -973,149 +1001,222 @@ function SacredGallery() {
         </motion.div>
 
         {/* masonry gallery */}
+        <div className="relative mt-20">
+
+  {/* LEFT */}
+  <button
+    onClick={() => emblaApi?.scrollPrev()}
+    className="
+      absolute
+      left-2
+      top-1/2
+      z-30
+      hidden
+      -translate-y-1/2
+      md:flex
+
+      h-14
+      w-14
+
+      items-center
+      justify-center
+
+      rounded-full
+
+      border
+      border-yellow-400/20
+
+      bg-black/40
+
+      backdrop-blur-xl
+
+      transition-all
+      duration-300
+
+      hover:scale-110
+      hover:bg-yellow-400/10
+    "
+  >
+    <ChevronLeft className="h-6 w-6 text-yellow-200" />
+  </button>
+
+  {/* RIGHT */}
+  <button
+    onClick={() => emblaApi?.scrollNext()}
+    className="
+      absolute
+      right-2
+      top-1/2
+      z-30
+      hidden
+      -translate-y-1/2
+      md:flex
+
+      h-14
+      w-14
+
+      items-center
+      justify-center
+
+      rounded-full
+
+      border
+      border-yellow-400/20
+
+      bg-black/40
+
+      backdrop-blur-xl
+
+      transition-all
+      duration-300
+
+      hover:scale-110
+      hover:bg-yellow-400/10
+    "
+  >
+    <ChevronRight className="h-6 w-6 text-yellow-200" />
+  </button>
+
+  {/* EMBLA */}
+  <div
+    ref={emblaRef}
+    className="overflow-hidden"
+  >
+    <div className="flex">
+      {galleryImages.map((item, index) => (
         <div
-        className="
-          grid
-          grid-cols-1
-          md:grid-cols-2
-          xl:grid-cols-3 gap-6"> 
-          {galleryImages.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{
-                opacity: 0,
-                y: 80,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.8,
-                delay: index * 0.08,
-              }}
+          key={index}
+          className="
+            min-w-0
+
+            flex-[0_0_90%]
+            md:flex-[0_0_60%]
+            xl:flex-[0_0_42%]
+
+            px-4
+          "
+        >
+          <motion.div
+            whileHover={{
+              y: -10,
+            }}
+            className="
+              group
+              relative
+              overflow-hidden
+
+              rounded-[2.5rem]
+
+              border
+              border-yellow-400/15
+
+              bg-white/5
+
+              backdrop-blur-xl
+            "
+          >
+            {/* overlay */}
+            <div
+              className="
+                absolute
+                inset-0
+                z-10
+
+                bg-gradient-to-t
+                from-black/80
+                via-black/10
+                to-transparent
+              "
+            />
+
+            {/* image */}
+            <motion.img
+              src={item.image}
+              alt={item.alt}
+              loading="lazy"
               whileHover={{
-                y: -10,
+                scale: 1.08,
+              }}
+              transition={{
+                duration: 0.7,
               }}
               className="
-                group
-                relative
-                mb-6
-                overflow-hidden
-                rounded-[2rem]
+                h-[520px]
+                w-full
+                object-cover
+              "
+            />
 
-                border
-                border-yellow-400/15
+            {/* glow */}
+            <div
+              className="
+                absolute
+                -right-10
+                -top-10
 
-                bg-white/5
+                h-40
+                w-40
 
-                backdrop-blur-xl
+                rounded-full
+
+                bg-yellow-300/10
+
+                blur-3xl
+              "
+            />
+
+            {/* caption */}
+            <div
+              className="
+                absolute
+                bottom-0
+                left-0
+                z-20
+
+                w-full
+
+                p-6
               "
             >
-              
-              {/* glow */}
               <div
                 className="
-                  absolute
-                  inset-0
-                  z-10
-
-                  bg-gradient-to-t
-                  from-black/80
-                  via-black/10
-                  to-transparent
-                "
-              />
-
-              {/* image */}
-              <motion.img
-                src={item.image}
-                alt={item.alt}
-                loading="lazy"
-                whileHover={{
-                  scale: 1.06,
-                }}
-                transition={{
-                  duration: 0.7,
-                }}
-                className="
-                  h-full
-                  w-full
-                  object-cover
-                "
-              />
-
-              {/* floating glow */}
-              <div
-                className="
-                  absolute
-                  -right-10
-                  -top-10
-
-                  h-40
-                  w-40
+                  inline-flex
+                  items-center
+                  gap-2
 
                   rounded-full
 
+                  border
+                  border-yellow-300/20
+
                   bg-yellow-300/10
 
-                  blur-3xl
-                "
-              />
+                  px-4
+                  py-2
 
-              {/* caption */}
-              <div
-                className="
-                  absolute
-                  bottom-0
-                  left-0
-                  z-20
-
-                  w-full
-
-                  p-6
+                  backdrop-blur-md
                 "
               >
-                <div
+                <Sparkles className="h-4 w-4 text-yellow-300" />
+
+                <span
                   className="
-                    inline-flex
-                    items-center
-                    gap-2
-
-                    rounded-full
-
-                    border
-                    border-yellow-300/20
-
-                    bg-yellow-300/10
-
-                    px-4
-                    py-2
-
-                    backdrop-blur-md
+                    font-deva
+                    text-sm
+                    leading-[1.6]
+                    text-yellow-50
                   "
                 >
-                  <Sparkles className="h-4 w-4 text-yellow-300" />
-
-                  <span
-                    className="
-                      font-deva
-
-                      text-sm
-
-                      leading-[1.6]
-
-                      text-yellow-50
-                    "
-                  >
-                    {item.title}
-                  </span>
-                </div>
+                  {item.title}
+                </span>
               </div>
-            </motion.div>
-          ))}
+            </div>
+          </motion.div>
         </div>
+      ))}
+    </div>
+  </div>
+</div>
       </div>
     </section>
   );
@@ -1314,23 +1415,8 @@ function PujasPage() {
             <div className="mb-5 text-xs uppercase tracking-[0.5em] text-yellow-300">
               Sacred Ritual Collection
             </div>
-      
-            <h2
-              className="
-                font-deva
-                text-5xl
-                md:text-7xl
-                leading-[1.35]
-                text-white
-              "
-            >
-              समस्त पूजाएँ
-              <br />
-      
-              <span className="text-gradient-gold">
-                एवं अनुष्ठान सूची
-              </span>
-            </h2>
+
+          
       
             <p
               className="
