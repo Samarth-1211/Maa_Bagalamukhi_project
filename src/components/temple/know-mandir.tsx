@@ -678,14 +678,14 @@ function ChapterTwo() {
 
   const leftX = useTransform(
     smooth,
-    [0.14, 0.58],
-    ["0%", "-104%"]
+    [0.22, 0.52],
+    ["0%", "-135%"]
   );
-
+  
   const rightX = useTransform(
     smooth,
-    [0.14, 0.58],
-    ["0%", "104%"]
+    [0.22, 0.52],
+    ["0%", "135%"]
   );
 
   const curtainScale = useTransform(
@@ -696,8 +696,8 @@ function ChapterTwo() {
 
   const curtainOpacity = useTransform(
     smooth,
-    [0, 0.52, 0.7],
-    [1, 1, 0.2]
+    [0.18, 0.5, 0.58],
+    [1, 1, 0]
   );
 
   const captionOpacity = useTransform(
@@ -720,10 +720,9 @@ function ChapterTwo() {
 
   const imgOpacity = useTransform(
     smooth,
-    [0, 0.32, 1],
-    [0.82, 1, 1]
+    [0.15, 0.42, 1],
+    [0.45, 1, 1]
   );
-
   const imgDim = useTransform(
     smooth,
     [0, 0.48, 1],
@@ -733,7 +732,7 @@ function ChapterTwo() {
   return (
     <section
       ref={ref}
-      className="relative h-[130vh] overflow-hidden border-t border-gold/10 bg-night"
+      className="relative h-[170vh] overflow-hidden border-t border-gold/10 bg-night"
     >
       <div className="sticky top-0 flex h-full w-screen items-center justify-center overflow-hidden">
         <motion.img

@@ -5,7 +5,7 @@ import {
   useTransform,
   useSpring,
 } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import {
   ChevronDown,
   Sparkles,
@@ -98,6 +98,12 @@ function ChapterLabel({ n, label }: { n: string; label: string }) {
 
 /* --------------------------- Page --------------------------- */
 function VishkanyaPujaPage() {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
+  }, []);
   return (
     <main className="bg-night-radial text-foreground">
       <Intro />
