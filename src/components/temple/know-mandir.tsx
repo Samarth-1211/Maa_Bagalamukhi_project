@@ -905,7 +905,7 @@ function ChapterThree() {
         {/* heading */}
         <motion.div style={{ y: titleY }}>
 
-          <h2 className="mt-6 font-deva  text-4xl sm:text-6xl md:text-7xl  leading-[1.7] md:leading-[1.40] text-gradient-gold sm:text-6xl md:text-7xl">
+        <h2 className="-mt-6 md:mt-6 font-deva text-4xl sm:text-6xl md:text-7xl leading-[1.45] md:leading-[1.40] text-gradient-gold">
             लक्ष्मी विषकन्या दोष
             <br />
             निवारण महापूजा

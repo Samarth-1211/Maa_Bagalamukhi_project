@@ -7,7 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import devi from "@/assets/mandir-sanctum.webp";
+import devi from "@/assets/maaPitambraimage_2.webp";
 
 const faqs = [
   {

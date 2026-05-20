@@ -44,17 +44,10 @@ export function Footer() {
             <div className="mt-7 flex gap-3">
               {[
                 {
-                  Icon: Facebook,
-                  href: "#",
-                },
-                {
                   Icon: Instagram,
                   href: "https://www.instagram.com/maapitambarabagalamukhimandir",
                 },
-                {
-                  Icon: Youtube,
-                  href: "#",
-                },
+               
               ].map(({ Icon, href }, i) => (
                 <a
                   key={i}

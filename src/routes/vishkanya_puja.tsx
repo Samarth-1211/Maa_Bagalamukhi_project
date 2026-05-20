@@ -22,10 +22,10 @@ import {
   Brain,
 }from "lucide-react";
 import dosha from "@/assets/vishkanya-dosha.webp";
-import dosha2 from "@/assets/vishkanya-dosha.webp";
+import dosha2 from "@/assets/maaPitambraimage_2.webp";
 import swamiPuja from "@/assets/swami-puja.webp";
 import havan from "@/assets/havan.webp";
-import sanctum from "@/assets/mandir-sanctum.webp";
+import sanctum from "@/assets/maaPitambraimage_2.webp";
 import yantra from "@/assets/yantra.webp";
 
 export const Route = createFileRoute("/vishkanya_puja")({
@@ -136,7 +136,7 @@ function Intro() {
         <img
           src={dosha}
           alt="लक्ष्मी विषकन्या दोष निवारण महापूजा"
-          className="h-full w-full object-cover opacity-55"
+          className="h-full w-full object-cover opacity-55 blur-[2px] scale-105"
           width={1536}
           height={1024}
         />
@@ -441,7 +441,7 @@ function ChapterRitual() {
         <img
           src={sanctum}
           alt=""
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover blur-[2px] scale-105"
           loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-night-deep via-night-deep/70 to-night-deep" />
@@ -458,20 +458,22 @@ function ChapterRitual() {
           </p>
         </div>
 
-        <ol className="relative mt-20 pl-8 md:pl-12">          {steps.map((s, i) => (
+        <ol className="relative mt-20 space-y-10 pl-14 md:pl-16">      {steps.map((s, i) => (
             <motion.li
               key={s.n}
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7, delay: i * 0.05, ease: "easeOut" }}
-              className="relative mb-14 last:mb-0"
+              className="relative min-h-[70px]"
             >
-              <span className="absolute -left-0 flex h-10 w-10 items-center justify-center rounded-full border border-gold/40 bg-night-deep text-gold shadow-glow md:-left-[3.55rem]">
+            <span className="absolute left-[-3.2rem] top-1 flex h-10 w-10 items-center justify-center rounded-full border border-gold/40 bg-night-deep text-gold shadow-glow md:left-[-3.55rem]">
                 <span className="font-deva text-lg">{s.n}</span>
               </span>
-              <h3 className="font-deva text-2xl text-gold">{s.title}</h3>
-              <p className="mt-2 max-w-2xl leading-relaxed text-foreground/75">
+              <h3 className="pr-2 font-deva text-xl leading-relaxed text-gold sm:text-2xl">
+                {s.title}
+              </h3>
+              <p className="mt-3 max-w-2xl text-sm leading-7 text-foreground/75 sm:text-base">
                 {s.body}
               </p>
             </motion.li>

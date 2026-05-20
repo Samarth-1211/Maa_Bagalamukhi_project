@@ -1285,7 +1285,7 @@ function PujasPage() {
         <Embers />
 
         {/* content */}
-        <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
+        <div className="relative z-10 mx-auto max-w-5xl px-6 pt-28 md:pt-0 text-center">
           <motion.div
             initial={{
               opacity: 0,
@@ -1298,7 +1298,7 @@ function PujasPage() {
             transition={{
               duration: 1,
             }}
-            className="mb-6 inline-flex items-center gap-4 rounded-full border border-yellow-400/20 bg-yellow-400/10 px-6 py-3 backdrop-blur-md"
+            className="mb-8 mt-6 md:mt-0 inline-flex items-center gap-4 rounded-full border border-yellow-400/20 bg-yellow-400/10 px-6 py-3 backdrop-blur-md"
           >
             <Sparkles className="h-4 w-4 text-yellow-300" />
 
@@ -1360,7 +1360,7 @@ function PujasPage() {
           >
             <Link
               to="/vishkanya_puja"
-              className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-yellow-300 to-yellow-500 px-10 py-5 font-semibold text-black shadow-[0_0_40px_rgba(255,200,0,0.35)] transition-all duration-300 hover:scale-105"
+              className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-yellow-300 to-yellow-500 px-10 py-3 font-semibold text-black shadow-[0_0_40px_rgba(255,200,0,0.35)] transition-all duration-300 hover:scale-105"
             >
             लक्ष्मी विषकन्या दोष निवारण महापूजा
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
