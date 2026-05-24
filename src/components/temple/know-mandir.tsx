@@ -314,6 +314,10 @@ function ChapterOne() {
           जहाँ पहुँचते ही मन शांत हो जाता है।
         </p>
 
+        <div className="mt-6 font-hindi text-sm text-ivory/75">
+  देशभर से श्रद्धालु साधना एवं अनुष्ठान हेतु पधारते हैं
+</div>
+
         {/* STATS */}
 
         <div className="mt-10">

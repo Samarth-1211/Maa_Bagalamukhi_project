@@ -5,8 +5,10 @@ import maaTrishulLogo from "@/assets/maa_trishul_logo.webp";
 
 const highlights = [
   { value: "3 KM", label: "महाकालेश्वर से दूरी" },
-  { value: "नित्य", label: "पूजा, हवन और आरती" },
-  { value: "सिद्ध", label: "बगलामुखी साधना पीठ" },
+  {
+    value: "नित्य  हवन",
+    label: "वैदिक पूजा,सेवा, अनुष्ठान एवं माँ बगलामुखी साधना"
+  },
 ];
 // --------------------------------------------------------------------------
 export function Hero() {
@@ -41,6 +43,10 @@ export function Hero() {
             पवित्र धाम।
           </p>
 
+          <p className="mt-4 max-w-2xl font-hindi text-base leading-loose text-gold/90">
+  शत्रु बाधा, न्यायिक कार्य, व्यवसायिक रुकावट, भय एवं नकारात्मक ऊर्जा से मुक्ति हेतु विशेष बगलामुखी साधनाएँ।
+</p>
+
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
               href="#events"
@@ -58,10 +64,10 @@ export function Hero() {
             </a>
           </div>
 
-          <div className="mt-9 grid max-w-2xl grid-cols-3 border border-gold/20 bg-night/55">
+          <div className="mt-9 grid max-w-2xl grid-cols-2 border border-gold/20 bg-night/55">
             {highlights.map((item) => (
-              <div key={item.label} className="border-r border-gold/15 px-3 py-4 last:border-r-0 sm:px-5">
-                <div className="font-display text-xl text-gold sm:text-2xl">{item.value}</div>
+              <div key={item.label} className="border-r border-gold/15 px-5 py-5 last:border-r-0 transition-all duration-300 hover:bg-gold/5">                
+              <div className="font-display text-2xl tracking-wide text-gold sm:text-3xl">{item.value}</div>
                 <div className="mt-1 font-hindi text-xs leading-relaxed text-ivory/65 sm:text-sm">
                   {item.label}
                 </div>
