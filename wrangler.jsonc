@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/wrangler.json",
-  "name": "projbagalamukhi",
+  "name": "maapitabraproj",
   "type": "javascript",
   "compatibility_date": "2025-09-24",
   "compatibility_flags": ["nodejs_compat"],
