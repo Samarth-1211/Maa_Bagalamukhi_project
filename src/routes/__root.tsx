@@ -96,7 +96,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: React.ReactNode }) {
-  const whatsappNumberE164 = "+919669401930";
+  const whatsappNumberE164 = "+917770068415";
   const whatsappChatUrl = `https://wa.me/${whatsappNumberE164.replace("+", "")}`;
 
   return (
